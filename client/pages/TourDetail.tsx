@@ -4,6 +4,8 @@ import type { Tour } from "@/components/TourCard";
 import { Button } from "@/components/ui/button";
 import PanoViewer from "@/components/PanoViewer";
 import PhotoGallery from "@/components/PhotoGallery";
+import ContributeDialog from "@/components/ContributeDialog";
+import ReviewDialog, { type Review } from "@/components/ReviewDialog";
 
 export default function TourDetail() {
   const { id } = useParams();
