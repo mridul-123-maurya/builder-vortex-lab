@@ -53,21 +53,20 @@ export default function Index() {
             <p className="text-muted-foreground text-sm">
               Discover a highlighted site and its history.
             </p>
-            <div className="mt-4 grid gap-5 sm:grid-cols-2">
+            <div className="mt-4 grid gap-5">
               <img
                 src={highlight.image}
                 alt={highlight.name}
-                className="rounded-xl w-full h-60 object-cover"
+                className="rounded-2xl w-full h-80 md:h-96 object-cover"
                 loading="lazy"
               />
-              <div>
-                <h3 className="text-xl font-semibold">{highlight.name}</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="px-1">
+                <h3 className="text-2xl md:text-3xl font-display font-semibold">{highlight.name}</h3>
+                <p className="mt-1 text-sm md:text-base text-muted-foreground">
                   {highlight.location}
                 </p>
-                <p className="mt-3 text-sm">
-                  An important center of Buddhist learning and art, known for
-                  its serene surroundings and heritage.
+                <p className="mt-3 text-base leading-relaxed">
+                  An important center of Buddhist learning and art, known for its serene surroundings and heritage. Explore detailed history, photos, and a 360° view.
                 </p>
                 <div className="mt-4 flex gap-3">
                   <Button asChild>
