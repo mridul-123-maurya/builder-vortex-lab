@@ -1,0 +1,16 @@
+{
+  "name": "Monastery360",
+  "short_name": "Monastery360",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf7ef",
+  "theme_color": "#8a1c1c",
+  "icons": [
+    {
+      "src": "/placeholder.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
