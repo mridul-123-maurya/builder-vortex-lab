@@ -13,7 +13,7 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="container flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-2">
-          <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">卍</span>
+          <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">☸</span>
           <span className="font-extrabold text-lg tracking-wide">Monastery360</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
