@@ -10,6 +10,21 @@ import ReviewDialog, { type Review } from "@/components/ReviewDialog";
 export default function TourDetail() {
   const { id } = useParams();
   const tour = (tours as Tour[]).find((t) => t.id === id);
+  const [extraImages, setExtraImages] = useState<string[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    if (!id) return;
+    try {
+      const c = localStorage.getItem(`contrib:${id}`);
+      if (c) {
+        const parsed = JSON.parse(c);
+        setExtraImages(parsed.images || []);
+      }
+      const r = localStorage.getItem(`reviews:${id}`);
+      if (r) setReviews(JSON.parse(r));
+    } catch {}
+  }, [id]);
 
   if (!tour) {
     return (
