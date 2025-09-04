@@ -10,7 +10,8 @@
       "https://images.unsplash.com/photo-1572710243491-8c8fd2d58130?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1548015577-5039b2c2b190?q=80&w=1200&auto=format&fit=crop"
     ],
-    "streetView": "https://maps.app.goo.gl/E2dcqPFDha6u8xTL7"
+    "streetView": "https://maps.app.goo.gl/E2dcqPFDha6u8xTL7",
+    "streetViewEmbed": "https://www.google.com/maps/embed?pb=!4v1756987159701!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRFptcjdvSlE.!2m2!1d27.28848553899807!2d88.56190567068603!3f0!4f0!5f0.7820865974627469"
   },
   {
     "id": "pemayangtse",
