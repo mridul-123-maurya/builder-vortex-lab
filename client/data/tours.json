@@ -28,20 +28,33 @@
     "name": "Tashiding Monastery",
     "location": "West Sikkim",
     "image": "https://images.unsplash.com/photo-1531925470851-1b5896b67b68?q=80&w=1200&auto=format&fit=crop",
-    "century": "17th c."
+    "century": "17th c.",
+    "pano": "https://photo-sphere-viewer-data.netlify.app/assets/cabin.jpg",
+    "gallery": [
+      "https://images.unsplash.com/photo-1531925470851-1b5896b67b68?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512214706766-1d933a16251e?q=80&w=1200&auto=format&fit=crop"
+    ]
   },
   {
     "id": "enchey",
     "name": "Enchey Monastery",
     "location": "Gangtok, Sikkim",
     "image": "https://images.unsplash.com/photo-1512214706766-1d933a16251e?q=80&w=1200&auto=format&fit=crop",
-    "century": "20th c."
+    "century": "20th c.",
+    "pano": "https://photo-sphere-viewer-data.netlify.app/assets/limpid.jpg",
+    "gallery": [
+      "https://images.unsplash.com/photo-1512214706766-1d933a16251e?q=80&w=1200&auto=format&fit=crop"
+    ]
   },
   {
     "id": "phensang",
     "name": "Phensang Monastery",
     "location": "North Sikkim",
     "image": "https://images.unsplash.com/photo-1548015577-5039b2c2b190?q=80&w=1200&auto=format&fit=crop",
-    "century": "18th c."
+    "century": "18th c.",
+    "pano": "https://photo-sphere-viewer-data.netlify.app/assets/teide.jpg",
+    "gallery": [
+      "https://images.unsplash.com/photo-1548015577-5039b2c2b190?q=80&w=1200&auto=format&fit=crop"
+    ]
   }
 ]
