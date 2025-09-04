@@ -4,7 +4,12 @@
     "name": "Rumtek Monastery",
     "location": "Gangtok, Sikkim",
     "image": "https://images.unsplash.com/photo-1572710243491-8c8fd2d58130?q=80&w=1200&auto=format&fit=crop",
-    "century": "18th c."
+    "century": "18th c.",
+    "pano": "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg",
+    "gallery": [
+      "https://images.unsplash.com/photo-1572710243491-8c8fd2d58130?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1548015577-5039b2c2b190?q=80&w=1200&auto=format&fit=crop"
+    ]
   },
   {
     "id": "pemayangtse",
