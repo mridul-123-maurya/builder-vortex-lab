@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import tours from "@/data/tours.json";
 import type { Tour } from "@/components/TourCard";
 import { Button } from "@/components/ui/button";
