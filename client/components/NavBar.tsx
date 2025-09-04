@@ -1,0 +1,89 @@
+import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ChevronDown, Menu } from "lucide-react";
+import LanguageSelector from "@/components/LanguageSelector";
+import { useI18n } from "@/context/i18n";
+import { cn } from "@/lib/utils";
+
+export default function NavBar() {
+  const { t } = useI18n();
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="sticky top-0 z-50 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <div className="container flex items-center justify-between py-3">
+        <Link to="/" className="flex items-center gap-2">
+          <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">卍</span>
+          <span className="font-extrabold text-lg tracking-wide">Monastery360</span>
+        </Link>
+        <nav className="hidden md:flex items-center gap-6">
+          <Dropdown label={t("explore")}>
+            <DropdownItem to="/tours" label={t("virtualTours")} />
+            <DropdownItem to="/map" label={t("interactiveMap")} />
+            <DropdownItem to="/archives" label={t("archives")} />
+            <DropdownItem to="/calendar" label={t("calendar")} />
+          </Dropdown>
+          <NavLink to="/audio" className={({ isActive }) => cn("text-sm hover:text-primary", isActive && "text-primary font-semibold")}>{t("audioGuide")}</NavLink>
+          <NavLink to="/services" className={({ isActive }) => cn("text-sm hover:text-primary", isActive && "text-primary font-semibold")}>{t("services")}</NavLink>
+          <NavLink to="/about" className={({ isActive }) => cn("text-sm hover:text-primary", isActive && "text-primary font-semibold")}>{t("about")}</NavLink>
+        </nav>
+        <div className="flex items-center gap-2">
+          <LanguageSelector />
+          <Button className="hidden md:inline-flex bg-primary text-primary-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition" asChild>
+            <Link to="/tours">{t("exploreNow")}</Link>
+          </Button>
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
+            <Menu />
+          </Button>
+        </div>
+      </div>
+      {open && (
+        <div className="border-t md:hidden bg-background">
+          <div className="container py-2 grid gap-2">
+            <MobileLink to="/tours" label={t("virtualTours")} />
+            <MobileLink to="/map" label={t("interactiveMap")} />
+            <MobileLink to="/archives" label={t("archives")} />
+            <MobileLink to="/calendar" label={t("calendar")} />
+            <MobileLink to="/audio" label={t("audioGuide")} />
+            <MobileLink to="/services" label={t("services")} />
+            <MobileLink to="/about" label={t("about")} />
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Dropdown({ label, children }: { label: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button className="inline-flex items-center gap-1 text-sm hover:text-primary" aria-haspopup="menu" aria-expanded={open}>
+        {label}
+        <ChevronDown className="h-4 w-4" />
+      </button>
+      {open && (
+        <div className="absolute left-0 mt-2 w-56 rounded-md border bg-popover p-1 shadow-lg">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DropdownItem({ to, label }: { to: string; label: string }) {
+  return (
+    <Link to={to} className="block rounded-sm px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground">
+      {label}
+    </Link>
+  );
+}
+
+function MobileLink({ to, label }: { to: string; label: string }) {
+  return (
+    <Link to={to} className="flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-accent">
+      <span>{label}</span>
+      <ChevronDown className="rotate-[-90deg]" />
+    </Link>
+  );
+}
