@@ -8,8 +8,8 @@ export default function HeroSection() {
     <section className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-secondary to-white">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1601957561916-38f0397e1b92?q=80&w=2000&auto=format&fit=crop"
-          alt="Sikkim monastery"
+          src="https://www.wtravelmagazine.com/wp-content/uploads/2020/09/30.113.5-Beautiful-statue-of-Lord-Buddha-at-Ravangla-Sikkim-image-by-Rudra-Narayan-Mitra.jpg"
+          alt="Buddha statue at Ravangla, Sikkim"
           className="h-full w-full object-cover opacity-60"
           loading="eager"
         />
