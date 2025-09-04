@@ -16,7 +16,12 @@
     "name": "Pemayangtse Monastery",
     "location": "Pelling, Sikkim",
     "image": "https://images.unsplash.com/photo-1523779917675-b6ed3a42c4a1?q=80&w=1200&auto=format&fit=crop",
-    "century": "17th c."
+    "century": "17th c.",
+    "pano": "https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg",
+    "gallery": [
+      "https://images.unsplash.com/photo-1523779917675-b6ed3a42c4a1?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1531925470851-1b5896b67b68?q=80&w=1200&auto=format&fit=crop"
+    ]
   },
   {
     "id": "tashiding",
