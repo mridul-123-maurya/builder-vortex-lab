@@ -17,15 +17,22 @@ export default function HeroSection() {
       </div>
       <div className="relative z-10 px-6 md:px-12 py-20 md:py-28">
         <div className="max-w-3xl">
-          <p className="uppercase tracking-widest text-xs text-accent-foreground/80">{t("appName")}</p>
+          <p className="uppercase tracking-widest text-xs text-accent-foreground/80">
+            {t("appName")}
+          </p>
           <h1 className="mt-3 font-display text-4xl md:text-6xl font-extrabold leading-tight">
             Explore Sikkim's Monasteries in 360°
           </h1>
           <p className="mt-4 text-base md:text-lg text-muted-foreground">
-            Virtual tours, interactive maps, digital archives, and smart audio guides—designed for tourists, researchers, and locals.
+            Virtual tours, interactive maps, digital archives, and smart audio
+            guides—designed for tourists, researchers, and locals.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" className="bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition" asChild>
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+              asChild
+            >
               <Link to="/tours">{t("exploreNow")}</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>

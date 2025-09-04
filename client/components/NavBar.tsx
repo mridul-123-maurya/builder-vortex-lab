@@ -13,8 +13,12 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="container flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-2">
-          <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">☸</span>
-          <span className="font-extrabold text-lg tracking-wide">Monastery360</span>
+          <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">
+            ☸
+          </span>
+          <span className="font-extrabold text-lg tracking-wide">
+            Monastery360
+          </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           <Dropdown label={t("explore")}>
@@ -23,16 +27,55 @@ export default function NavBar() {
             <DropdownItem to="/archives" label={t("archives")} />
             <DropdownItem to="/calendar" label={t("calendar")} />
           </Dropdown>
-          <NavLink to="/audio" className={({ isActive }) => cn("text-sm hover:text-primary", isActive && "text-primary font-semibold")}>{t("audioGuide")}</NavLink>
-          <NavLink to="/services" className={({ isActive }) => cn("text-sm hover:text-primary", isActive && "text-primary font-semibold")}>{t("services")}</NavLink>
-          <NavLink to="/about" className={({ isActive }) => cn("text-sm hover:text-primary", isActive && "text-primary font-semibold")}>{t("about")}</NavLink>
+          <NavLink
+            to="/audio"
+            className={({ isActive }) =>
+              cn(
+                "text-sm hover:text-primary",
+                isActive && "text-primary font-semibold",
+              )
+            }
+          >
+            {t("audioGuide")}
+          </NavLink>
+          <NavLink
+            to="/services"
+            className={({ isActive }) =>
+              cn(
+                "text-sm hover:text-primary",
+                isActive && "text-primary font-semibold",
+              )
+            }
+          >
+            {t("services")}
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              cn(
+                "text-sm hover:text-primary",
+                isActive && "text-primary font-semibold",
+              )
+            }
+          >
+            {t("about")}
+          </NavLink>
         </nav>
         <div className="flex items-center gap-2">
           <LanguageSelector />
-          <Button className="hidden md:inline-flex bg-primary text-primary-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition" asChild>
+          <Button
+            className="hidden md:inline-flex bg-primary text-primary-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition"
+            asChild
+          >
             <Link to="/tours">{t("exploreNow")}</Link>
           </Button>
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
             <Menu />
           </Button>
         </div>
@@ -54,11 +97,25 @@ export default function NavBar() {
   );
 }
 
-function Dropdown({ label, children }: { label: string; children: React.ReactNode }) {
+function Dropdown({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <button className="inline-flex items-center gap-1 text-sm hover:text-primary" aria-haspopup="menu" aria-expanded={open}>
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        className="inline-flex items-center gap-1 text-sm hover:text-primary"
+        aria-haspopup="menu"
+        aria-expanded={open}
+      >
         {label}
         <ChevronDown className="h-4 w-4" />
       </button>
@@ -73,7 +130,10 @@ function Dropdown({ label, children }: { label: string; children: React.ReactNod
 
 function DropdownItem({ to, label }: { to: string; label: string }) {
   return (
-    <Link to={to} className="block rounded-sm px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground">
+    <Link
+      to={to}
+      className="block rounded-sm px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+    >
       {label}
     </Link>
   );
@@ -81,7 +141,10 @@ function DropdownItem({ to, label }: { to: string; label: string }) {
 
 function MobileLink({ to, label }: { to: string; label: string }) {
   return (
-    <Link to={to} className="flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-accent">
+    <Link
+      to={to}
+      className="flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-accent"
+    >
       <span>{label}</span>
       <ChevronDown className="rotate-[-90deg]" />
     </Link>

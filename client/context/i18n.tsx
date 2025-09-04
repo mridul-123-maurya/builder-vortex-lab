@@ -1,4 +1,11 @@
-import { createContext, useContext, useMemo, useState, ReactNode, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
 export type Lang = "en" | "hi" | "ne" | "bo"; // English, Hindi, Nepali, Tibetan (bo)
 
@@ -79,7 +86,10 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(() => {
-    const stored = typeof window !== "undefined" ? localStorage.getItem("lang") as Lang | null : null;
+    const stored =
+      typeof window !== "undefined"
+        ? (localStorage.getItem("lang") as Lang | null)
+        : null;
     return stored || "en";
   });
 

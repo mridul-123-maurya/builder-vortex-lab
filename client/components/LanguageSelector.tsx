@@ -1,5 +1,11 @@
 import { useI18n, Lang } from "@/context/i18n";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function LanguageSelector() {
   const { lang, setLang, t } = useI18n();
