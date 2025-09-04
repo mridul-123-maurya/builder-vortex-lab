@@ -1,6 +1,7 @@
 import LanguageSelector from "@/components/LanguageSelector";
 import TourCard, { type Tour } from "@/components/TourCard";
 import tours from "@/data/tours.json";
+import PanoViewer from "@/components/PanoViewer";
 
 export default function VirtualTours() {
   const items = tours as Tour[];
