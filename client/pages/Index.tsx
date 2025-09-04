@@ -47,7 +47,7 @@ export default function Index() {
 
         <section className="mt-14 grid gap-6 md:grid-cols-3">
           <div className="md:col-span-2 rounded-2xl border p-6 bg-card/60">
-            <h2 className="font-display text-2xl font-bold">
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold">
               {t("monasteryOfWeek")}
             </h2>
             <p className="text-muted-foreground text-sm">
