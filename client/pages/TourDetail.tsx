@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import tours from "@/data/tours.json";
 import type { Tour } from "@/components/TourCard";
 import { Button } from "@/components/ui/button";
+import PanoViewer from "@/components/PanoViewer";
+import PhotoGallery from "@/components/PhotoGallery";
 
 export default function TourDetail() {
   const { id } = useParams();
