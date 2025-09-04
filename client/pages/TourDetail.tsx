@@ -77,17 +77,46 @@ export default function TourDetail() {
               />
             )}
           </div>
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button>Start Tour</Button>
             <Button variant="outline" asChild>
               <Link to="/archives">Related Archives</Link>
             </Button>
+            {id && (
+              <ContributeDialog
+                tourId={id}
+                onSaved={(d) => {
+                  setExtraImages(d.images || []);
+                }}
+              />
+            )}
+            {id && (
+              <ReviewDialog tourId={id} onSaved={(r) => setReviews((prev) => [...prev, r])} />
+            )}
           </div>
         </div>
       </div>
       <div className="container py-10">
         <h2 className="font-semibold mb-3">Photo Gallery</h2>
-        <PhotoGallery images={(tour as any).gallery || [tour.image]} />
+        <PhotoGallery images={[...(((tour as any).gallery as string[]) || [tour.image]), ...extraImages]} />
+      </div>
+      <div className="container pb-12">
+        <h2 className="font-semibold mb-3">Reviews</h2>
+        {reviews.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No reviews yet.</p>
+        ) : (
+          <ul className="grid gap-3">
+            {reviews.map((r, i) => (
+              <li key={i} className="rounded-xl border p-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium">{r.name}</span>
+                  <span className="text-sm">{"★".repeat(r.rating)}{"☆".repeat(5 - r.rating)}</span>
+                </div>
+                <p className="text-sm mt-1">{r.comment}</p>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );
