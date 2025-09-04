@@ -1,0 +1,16 @@
+[
+  {
+    "id": "losar",
+    "name": "Losar - Tibetan New Year",
+    "date": "2025-02-28",
+    "location": "Gangtok",
+    "monastery": "Rumtek Monastery"
+  },
+  {
+    "id": "saga-dawa",
+    "name": "Saga Dawa",
+    "date": "2025-05-25",
+    "location": "Pelling",
+    "monastery": "Pemayangtse Monastery"
+  }
+]
