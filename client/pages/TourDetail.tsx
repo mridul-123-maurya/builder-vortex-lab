@@ -39,26 +39,26 @@ export default function TourDetail() {
           <h1 className="font-display text-3xl font-bold">{tour.name}</h1>
           <p className="text-muted-foreground">{tour.location}</p>
           <div className="mt-4 rounded-xl overflow-hidden border">
-            <PanoViewer
-              src={
-                (tour as any).pano ||
-                "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg"
-              }
-              height={320}
-            />
+            {(tour as any).streetViewEmbed ? (
+              <iframe
+                src={(tour as any).streetViewEmbed}
+                className="w-full h-[320px]"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Street View"
+              />
+            ) : (
+              <PanoViewer
+                src={
+                  (tour as any).pano ||
+                  "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg"
+                }
+                height={320}
+              />
+            )}
           </div>
-          {(tour as any).streetView && (
-            <div className="mt-2 text-sm">
-              <a
-                className="text-primary underline"
-                href={(tour as any).streetView}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open Street View
-              </a>
-            </div>
-          )}
           <div className="mt-6 flex gap-3">
             <Button>Start Tour</Button>
             <Button variant="outline" asChild>
