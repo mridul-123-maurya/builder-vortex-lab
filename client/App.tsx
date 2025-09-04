@@ -8,6 +8,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import VirtualTours from "./pages/VirtualTours";
+import PlaceholderPage from "./pages/PlaceholderPage";
+import MainLayout from "@/components/MainLayout";
+import { I18nProvider } from "@/context/i18n";
 
 const queryClient = new QueryClient();
 
@@ -16,13 +20,24 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <I18nProvider>
+        <BrowserRouter>
+          <MainLayout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/tours" element={<VirtualTours />} />
+              <Route path="/map" element={<PlaceholderPage title="Interactive Map" />} />
+              <Route path="/archives" element={<PlaceholderPage title="Digital Archives" />} />
+              <Route path="/calendar" element={<PlaceholderPage title="Cultural Calendar" />} />
+              <Route path="/audio" element={<PlaceholderPage title="Smart Audio Guide" />} />
+              <Route path="/services" element={<PlaceholderPage title="Tourist Services" />} />
+              <Route path="/about" element={<PlaceholderPage title="About & Community" />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </MainLayout>
+        </BrowserRouter>
+      </I18nProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
