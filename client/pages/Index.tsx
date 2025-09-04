@@ -110,6 +110,42 @@ export default function Index() {
                       <span className="font-medium">More</span>
                     </a>
                   </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    <a
+                      href="https://www.makemytrip.com/holidays-india/package?id=100001&dest=Sikkim"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl border p-3 bg-card hover:bg-accent"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="font-medium">Rumtek & Gangtok Guided Tour</div>
+                          <div className="text-xs text-muted-foreground">2N/3D • hotel + transfers</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-semibold">₹9,999</div>
+                          <div className="text-xs text-muted-foreground">from</div>
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://www.tripadvisor.in/AttractionProductReview-g659796-d11453434-Private_Sikkim_Tour-Gangtok_East_Sikkim_Sikkim.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl border p-3 bg-card hover:bg-accent"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="font-medium">Sikkim Highlights with Rumtek</div>
+                          <div className="text-xs text-muted-foreground">4N/5D • private guide</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-semibold">₹18,500</div>
+                          <div className="text-xs text-muted-foreground">from</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
