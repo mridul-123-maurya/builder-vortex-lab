@@ -1,62 +1,83 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import TourCard, { type Tour } from "@/components/TourCard";
+import tours from "@/data/tours.json";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
-
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
+  const items = tours as Tour[];
+  const highlight = items[0];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+    <div className="bg-gradient-to-b from-secondary/60 to-background">
+      <div className="container py-8 md:py-12">
+        <HeroSection />
+
+        <section id="quick-links" className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <QuickLink to="/tours" title="Virtual Tours" description="Immerse in 360° views of monasteries." icon="🧭" />
+          <QuickLink to="/map" title="Interactive Map" description="Find monasteries and nearby spots." icon="🗺️" />
+          <QuickLink to="/calendar" title="Cultural Calendar" description="Festivals, rituals, and events." icon="📅" />
+          <QuickLink to="/archives" title="Digital Archives" description="Manuscripts, murals, and more." icon="📜" />
+        </section>
+
+        <section className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="md:col-span-2 rounded-2xl border p-6 bg-card/60">
+            <h2 className="font-display text-2xl font-bold">Monastery of the Week</h2>
+            <p className="text-muted-foreground text-sm">Discover a highlighted site and its history.</p>
+            <div className="mt-4 grid gap-5 sm:grid-cols-2">
+              <img src={highlight.image} alt={highlight.name} className="rounded-xl w-full h-60 object-cover" loading="lazy" />
+              <div>
+                <h3 className="text-xl font-semibold">{highlight.name}</h3>
+                <p className="text-sm text-muted-foreground">{highlight.location}</p>
+                <p className="mt-3 text-sm">An important center of Buddhist learning and art, known for its serene surroundings and heritage.</p>
+                <div className="mt-4 flex gap-3">
+                  <Button asChild>
+                    <Link to={`/tours/${highlight.id}`}>Start Tour</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link to="/archives">View Archives</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border p-6 bg-secondary/40">
+            <h2 className="font-semibold">Trending Tours</h2>
+            <div className="mt-4 grid gap-4">
+              {items.slice(1, 4).map((tour) => (
+                <TourCard key={tour.id} tour={tour} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-14">
+          <div className="flex items-center justify-between">
+            <h2 className="font-display text-2xl font-bold">Explore Monasteries</h2>
+            <Link to="/tours" className="text-sm text-primary hover:underline">See all</Link>
+          </div>
+          <div className="mt-5 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {items.map((tour) => (
+              <TourCard key={tour.id} tour={tour} />
+            ))}
+          </div>
+        </section>
       </div>
     </div>
+  );
+}
+
+function QuickLink({ to, title, description, icon }: { to: string; title: string; description: string; icon: string }) {
+  return (
+    <Link to={to} className="group rounded-2xl border p-5 bg-card hover:shadow-md hover:-translate-y-0.5 transition">
+      <div className="flex items-center gap-3">
+        <div className="text-2xl">{icon}</div>
+        <div>
+          <h3 className="font-semibold group-hover:text-primary">{title}</h3>
+          <p className="text-sm text-muted-foreground">{description}</p>
+        </div>
+      </div>
+    </Link>
   );
 }
