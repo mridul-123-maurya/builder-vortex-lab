@@ -91,7 +91,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section className="mt-14">
+        <section className="mt-8">
           <div className="flex items-center justify-between">
             <h2 className="font-display text-2xl font-bold">
               Explore Monasteries
