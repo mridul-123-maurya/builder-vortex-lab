@@ -76,6 +76,16 @@ export default function Index() {
                     <Link to="/archives">View Archives</Link>
                   </Button>
                 </div>
+                <div className="mt-3 text-sm">
+                  <a
+                    href="https://www.google.com/search?q=Rumtek+Monastery+tour+packages"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline"
+                  >
+                    Top paid trips for Rumtek →
+                  </a>
+                </div>
               </div>
             </div>
           </div>
