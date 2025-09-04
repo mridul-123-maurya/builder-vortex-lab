@@ -76,14 +76,34 @@ export default function Index() {
                     <Link to="/archives">View Archives</Link>
                   </Button>
                 </div>
-                <div className="mt-3 text-sm">
+                <div className="mt-3 flex items-center gap-2 text-sm">
+                  <span className="text-muted-foreground">Top paid trips:</span>
+                  <a
+                    href="https://www.makemytrip.com/holidays-india/sikkim-travel-packages.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 hover:bg-accent"
+                    aria-label="MakeMyTrip Sikkim packages"
+                  >
+                    ✈️ MakeMyTrip
+                  </a>
+                  <a
+                    href="https://www.tripadvisor.in/Attractions-g297672-Activities-c42-Sikkim.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 hover:bg-accent"
+                    aria-label="Tripadvisor Sikkim tours"
+                  >
+                    🧭 Tripadvisor
+                  </a>
                   <a
                     href="https://www.google.com/search?q=Rumtek+Monastery+tour+packages"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary underline"
+                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 hover:bg-accent"
+                    aria-label="More paid trips"
                   >
-                    Top paid trips for Rumtek →
+                    🔗 More
                   </a>
                 </div>
               </div>
