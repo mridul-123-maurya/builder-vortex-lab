@@ -9,7 +9,8 @@
     "gallery": [
       "https://images.unsplash.com/photo-1572710243491-8c8fd2d58130?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1548015577-5039b2c2b190?q=80&w=1200&auto=format&fit=crop"
-    ]
+    ],
+    "streetView": "https://maps.app.goo.gl/E2dcqPFDha6u8xTL7"
   },
   {
     "id": "pemayangtse",
