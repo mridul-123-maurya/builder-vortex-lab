@@ -15,14 +15,9 @@ export default function VirtualTours() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div className="rounded-xl border overflow-hidden">
-          <div className="aspect-video bg-black/80 text-white flex items-center justify-center text-center">
-            <div>
-              <div className="text-6xl font-bold">360°</div>
-              <p className="text-sm opacity-80">Panoramic viewer placeholder</p>
-            </div>
-          </div>
+          <PanoViewer src={(items[0] as any).pano || "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg"} height={420} />
           <div className="p-4 text-sm text-muted-foreground">
-            Use this space to embed a 360° viewer. Supports lazy-loading and full-screen.
+            Drag to look around. Use the fullscreen button for an immersive view.
           </div>
         </div>
         <div className="rounded-xl border p-4 bg-secondary/40">
