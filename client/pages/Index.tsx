@@ -76,34 +76,37 @@ export default function Index() {
                     <Link to="/archives">View Archives</Link>
                   </Button>
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-sm">
-                  <span className="text-muted-foreground">Top paid trips:</span>
+                <div className="mt-3 flex items-center gap-3 text-base md:text-lg">
+                  <span className="text-muted-foreground font-semibold">Top paid trips:</span>
                   <a
                     href="https://www.makemytrip.com/holidays-india/sikkim-travel-packages.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 hover:bg-accent"
+                    className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 hover:bg-accent"
                     aria-label="MakeMyTrip Sikkim packages"
                   >
-                    ✈️ MakeMyTrip
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/MakeMyTrip_Logo.svg/256px-MakeMyTrip_Logo.svg.png" alt="MakeMyTrip" className="h-5 w-auto" />
+                    <span className="hidden sm:inline">MakeMyTrip</span>
                   </a>
                   <a
                     href="https://www.tripadvisor.in/Attractions-g297672-Activities-c42-Sikkim.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 hover:bg-accent"
+                    className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 hover:bg-accent"
                     aria-label="Tripadvisor Sikkim tours"
                   >
-                    🧭 Tripadvisor
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Tripadvisor_Logo_circle-green_horizontal-lockup_registered_RGB.svg/512px-Tripadvisor_Logo_circle-green_horizontal-lockup_registered_RGB.svg.png" alt="Tripadvisor" className="h-5 w-auto" />
+                    <span className="hidden sm:inline">Tripadvisor</span>
                   </a>
                   <a
                     href="https://www.google.com/search?q=Rumtek+Monastery+tour+packages"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 hover:bg-accent"
+                    className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 hover:bg-accent"
                     aria-label="More paid trips"
                   >
-                    🔗 More
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="More" className="h-5 w-auto" />
+                    <span className="hidden sm:inline">More</span>
                   </a>
                 </div>
               </div>
