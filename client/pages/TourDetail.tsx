@@ -47,6 +47,18 @@ export default function TourDetail() {
               height={320}
             />
           </div>
+          {(tour as any).streetView && (
+            <div className="mt-2 text-sm">
+              <a
+                className="text-primary underline"
+                href={(tour as any).streetView}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Street View
+              </a>
+            </div>
+          )}
           <div className="mt-6 flex gap-3">
             <Button>Start Tour</Button>
             <Button variant="outline" asChild>
