@@ -21,6 +21,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@photo-sphere-viewer/core": "^5.14.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "photo-sphere-viewer": "^4.8.1",

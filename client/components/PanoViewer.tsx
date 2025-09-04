@@ -1,19 +1,19 @@
 import { useEffect, useRef } from "react";
-import PhotoSphereViewer from "photo-sphere-viewer";
-import "photo-sphere-viewer/dist/photo-sphere-viewer.css";
+import { Viewer } from "@photo-sphere-viewer/core";
+import "@photo-sphere-viewer/core/index.css";
 
 export default function PanoViewer({ src, height = 400 }: { src: string; height?: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!ref.current) return;
-    const viewer = new PhotoSphereViewer({
-      container: ref.current,
+    const viewer = new Viewer({
+      container: ref.current!,
       panorama: src,
       touchmoveTwoFingers: true,
       navbar: ["zoom", "fullscreen"],
-      defaultLong: 0,
-      defaultLat: 0,
+      defaultYaw: 0,
+      defaultPitch: 0,
     });
     return () => viewer.destroy();
   }, [src]);
