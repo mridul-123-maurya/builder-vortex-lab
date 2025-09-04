@@ -14,6 +14,9 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
+      photo-sphere-viewer:
+        specifier: ^4.8.1
+        version: 4.8.1
       zod:
         specifier: ^3.25.76
         version: 3.25.76
@@ -2238,6 +2241,10 @@ packages:
     resolution: {integrity: sha512-//nshmD55c46FuFw26xV/xFAaB5HF9Xdap7HJBBnrKdAd6/GxDBaNA1870O79+9ueg61cZLSVc+OaFlfmObYVQ==}
     engines: {node: '>= 14.16'}
 
+  photo-sphere-viewer@4.8.1:
+    resolution: {integrity: sha512-Yl1KZq1adtrajCOrf8Y79Qi4A35DfEu8atL779YOdA9XHoH2l2+sYovejnZlGgUM0hEbTyenRDoyXSy/MtioYg==}
+    deprecated: Use @photo-sphere-viewer/core instead, see https://photo-sphere-viewer.js.org/guide/migration.html
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -2643,6 +2650,9 @@ packages:
     peerDependencies:
       three: '>=0.128.0'
 
+  three@0.147.0:
+    resolution: {integrity: sha512-LPTOslYQXFkmvceQjFTNnVVli2LaVF6C99Pv34fJypp8NbQLbTlu3KinZ0zURghS5zEehK+VQyvWuPZ/Sm8fzw==}
+
   three@0.176.0:
     resolution: {integrity: sha512-PWRKYWQo23ojf9oZSlRGH8K09q7nRSWx6LY/HF/UUrMdYgN9i1e2OwJYHoQjwc6HF/4lvvYLC5YC1X8UJL2ZpA==}
 
@@ -2714,6 +2724,9 @@ packages:
     resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  uevent@2.2.0:
+    resolution: {integrity: sha512-48s5LF/c6R1fUmctGib/dWKhZjZLd4aK/85dwVAbwgHNBSO0k0UNp0ZKZpkSbU6633qYhgykYQPakTSuOxZopA==}
 
   undici-types@7.10.0:
     resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
@@ -4837,6 +4850,11 @@ snapshots:
 
   pathval@2.0.1: {}
 
+  photo-sphere-viewer@4.8.1:
+    dependencies:
+      three: 0.147.0
+      uevent: 2.2.0
+
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
@@ -5300,6 +5318,8 @@ snapshots:
       potpack: 1.0.2
       three: 0.176.0
 
+  three@0.147.0: {}
+
   three@0.176.0: {}
 
   tiny-invariant@1.3.3: {}
@@ -5365,6 +5385,8 @@ snapshots:
       mime-types: 3.0.1
 
   typescript@5.9.2: {}
+
+  uevent@2.2.0: {}
 
   undici-types@7.10.0: {}
 
