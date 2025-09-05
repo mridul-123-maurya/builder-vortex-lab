@@ -76,7 +76,7 @@ export default function Index() {
                     <Link to="/archives">View Archives</Link>
                   </Button>
                 </div>
-                <div className="mt-4">
+                <div className="mt-8">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-base md:text-lg font-semibold">Top paid trips</div>
