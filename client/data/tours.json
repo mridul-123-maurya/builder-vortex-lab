@@ -54,7 +54,8 @@
     "pano": "https://pannellum.org/images/alma.jpg",
     "gallery": [
       "https://images.unsplash.com/photo-1512214706766-1d933a16251e?q=80&w=1200&auto=format&fit=crop"
-    ]
+    ],
+    "streetViewEmbed": "https://www.google.com/maps/embed?pb=!4v1757067898155!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ0pzTXEzOWdF!2m2!1d27.33593677395685!2d88.61916587167339!3f155.16776510708615!4f-7.4697961174341!5f0.7820865974627469"
   },
   {
     "id": "phensang",
