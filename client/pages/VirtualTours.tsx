@@ -29,17 +29,17 @@ export default function VirtualTours() {
   const panoSrc = current.pano || "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg";
 
   // helpers for iframe interaction detection
-  let iframeTimeout: number | null = null;
+  const iframeTimeoutRef = useRef<number | null>(null);
   const startIframeInteract = () => {
-    if (iframeTimeout) {
-      window.clearTimeout(iframeTimeout);
-      iframeTimeout = null;
+    if (iframeTimeoutRef.current) {
+      window.clearTimeout(iframeTimeoutRef.current);
+      iframeTimeoutRef.current = null;
     }
     setIsInteracting(true);
   };
   const stopIframeInteract = () => {
-    if (iframeTimeout) window.clearTimeout(iframeTimeout);
-    iframeTimeout = window.setTimeout(() => setIsInteracting(false), 2000);
+    if (iframeTimeoutRef.current) window.clearTimeout(iframeTimeoutRef.current);
+    iframeTimeoutRef.current = window.setTimeout(() => setIsInteracting(false), 2000);
   };
 
   return (
