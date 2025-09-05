@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu } from "lucide-react";
 import LanguageSelector from "@/components/LanguageSelector";
@@ -12,13 +13,19 @@ export default function NavBar() {
   return (
     <header className="sticky top-0 z-50 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="container flex items-center justify-between py-3">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">
-            ☸
-          </span>
-          <span className="font-extrabold text-lg tracking-wide">
-            Monastery360
-          </span>
+        <Link to="/" className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent shadow-md">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                <path d="M12 2C10.3431 2 9 3.34315 9 5C9 6.65685 10.3431 8 12 8C13.6569 8 15 6.65685 15 5C15 3.34315 13.6569 2 12 2Z" fill="white" />
+                <path d="M6 11C6 9 8 7 12 7C16 7 18 9 18 11C18 15 12 17 12 21C12 17 6 15 6 11Z" fill="rgba(255,255,255,0.95)" />
+              </svg>
+            </div>
+            <div className="flex flex-col leading-tight">
+              <span className="text-lg font-extrabold tracking-tight">Monastery</span>
+              <span className="text-xs text-muted-foreground font-medium">360° Tours</span>
+            </div>
+          </div>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           <Dropdown label={t("explore")}>
