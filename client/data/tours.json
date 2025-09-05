@@ -26,8 +26,12 @@
     "pano": "https://pannellum.org/images/alma.jpg",
     "gallery": [
       "https://images.unsplash.com/photo-1523779917675-b6ed3a42c4a1?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531925470851-1b5896b67b68?q=80&w=1200&auto=format&fit=crop"
-    ]
+      "https://images.unsplash.com/photo-1531925470851-1b5896b67b68?q=80&w=1200&auto=format&fit=crop",
+      "https://maps.app.goo.gl/2XL6MuoxGQDtWFKP9",
+      "https://maps.app.goo.gl/erQHQzcngpMGaShY8",
+      "https://maps.app.goo.gl/ANVnoyKpLtfeNJvt5"
+    ],
+    "streetViewEmbed": "https://www.google.com/maps/embed?pb=!4v1757066878853!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJREVoSlhucEFF!2m2!1d27.30518919282202!2d88.25156580066201!3f78.41357478731719!4f-4.6519010759553225!5f0.7820865974627469"
   },
   {
     "id": "tashiding",
