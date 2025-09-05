@@ -7,21 +7,34 @@ import { Button } from "@/components/ui/button";
 
 export default function ContributeDialog({ tourId, onSaved }: { tourId: string; onSaved: (data: { images: string[]; videos: string[]; pano?: string }) => void }) {
   const [open, setOpen] = useState(false);
-  const [images, setImages] = useState("");
-  const [videos, setVideos] = useState("");
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
+  const [videoFiles, setVideoFiles] = useState<File[]>([]);
   const [pano, setPano] = useState("");
 
-  const save = () => {
-    const data = {
-      images: images.split(/\n|,\s?/).map((s) => s.trim()).filter(Boolean),
-      videos: videos.split(/\n|,\s?/).map((s) => s.trim()).filter(Boolean),
-      pano: pano.trim() || undefined,
-    };
+  const fileToDataUrl = (file: File) =>
+    new Promise<string>((res, rej) => {
+      const fr = new FileReader();
+      fr.onload = () => res(String(fr.result));
+      fr.onerror = rej;
+      fr.readAsDataURL(file);
+    });
+
+  const save = async () => {
     try {
+      const images = await Promise.all(imageFiles.map((f) => fileToDataUrl(f)));
+      const videos = await Promise.all(videoFiles.map((f) => fileToDataUrl(f)));
+      const data = {
+        images: images.filter(Boolean),
+        videos: videos.filter(Boolean),
+        pano: pano.trim() || undefined,
+      };
       const key = `contrib:${tourId}`;
       localStorage.setItem(key, JSON.stringify(data));
       onSaved(data);
       setOpen(false);
+      setImageFiles([]);
+      setVideoFiles([]);
+      setPano("");
     } catch (e) {
       console.error("Failed to save contribution", e);
     }
@@ -35,16 +48,36 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>Contribute photos, videos, or 360°</DialogTitle>
-          <DialogDescription>Paste public URLs. We will add them to this tour locally; for production, connect storage later.</DialogDescription>
+          <DialogDescription>Upload files from your device. Files will be stored locally for this demo.</DialogDescription>
         </DialogHeader>
         <div className="grid gap-3">
           <div>
-            <Label htmlFor="images">Image URLs (comma or newline separated)</Label>
-            <Textarea id="images" value={images} onChange={(e) => setImages(e.target.value)} placeholder="https://...jpg\nhttps://...png" />
+            <Label htmlFor="images">Upload Images</Label>
+            <input
+              id="images"
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={(e) => setImageFiles(Array.from(e.target.files || []))}
+              className="mt-2"
+            />
+            {imageFiles.length > 0 && (
+              <div className="text-sm text-muted-foreground mt-2">{imageFiles.map((f) => f.name).join(', ')}</div>
+            )}
           </div>
           <div>
-            <Label htmlFor="videos">Video URLs (optional)</Label>
-            <Textarea id="videos" value={videos} onChange={(e) => setVideos(e.target.value)} placeholder="https://...mp4, https://youtube.com/..." />
+            <Label htmlFor="videos">Upload Videos (optional)</Label>
+            <input
+              id="videos"
+              type="file"
+              accept="video/*"
+              multiple
+              onChange={(e) => setVideoFiles(Array.from(e.target.files || []))}
+              className="mt-2"
+            />
+            {videoFiles.length > 0 && (
+              <div className="text-sm text-muted-foreground mt-2">{videoFiles.map((f) => f.name).join(', ')}</div>
+            )}
           </div>
           <div>
             <Label htmlFor="pano">360° URL or Google Maps Embed URL (optional)</Label>
