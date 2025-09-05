@@ -30,7 +30,7 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="secondary">Contribute</Button>
+        <Button variant="outline">Contribute</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
