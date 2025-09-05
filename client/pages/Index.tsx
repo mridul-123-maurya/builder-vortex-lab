@@ -87,7 +87,7 @@ export default function Index() {
                     </div>
                   </div>
 
-                  <div className="mt-3 flex gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  <div className="mt-3 overflow-x-auto pb-2 px-2 -mx-2">
                     {[
                       {
                         href: "https://www.makemytrip.com/holidays-india/sikkim-travel-packages.html",
@@ -108,7 +108,7 @@ export default function Index() {
                         blurb: "Search offers",
                       },
                     ].map((p) => (
-                      <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer" className="min-w-[220px] flex-shrink-0 rounded-xl border bg-card p-3 hover:shadow-lg hover:-translate-y-1 transition-transform">
+                      <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer" className="w-56 flex-shrink-0 rounded-xl border bg-card p-3 hover:shadow-lg hover:-translate-y-1 transition-transform overflow-hidden">
                         <div className="flex items-center gap-3">
                           <img src={p.img} alt={p.label} className="h-8 w-auto object-contain" />
                           <div>
