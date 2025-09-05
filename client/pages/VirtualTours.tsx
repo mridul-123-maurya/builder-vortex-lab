@@ -54,9 +54,9 @@ export default function VirtualTours() {
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <div className="rounded-xl border overflow-hidden relative">
-          <div className="absolute left-4 top-4 bg-black/60 text-white text-sm font-medium px-3 py-1 rounded shadow">
-            {current.name}
+        <div className="rounded-xl border overflow-hidden">
+          <div className="p-4 border-b bg-slate-50">
+            <h3 className="text-lg font-semibold">{current.name}</h3>
           </div>
           {current.streetViewEmbed ? (
             <div style={{ height: 420 }} className="w-full rounded-b-xl overflow-hidden">
