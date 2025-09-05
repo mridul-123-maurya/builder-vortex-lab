@@ -43,7 +43,8 @@
     "gallery": [
       "https://images.unsplash.com/photo-1531925470851-1b5896b67b68?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1512214706766-1d933a16251e?q=80&w=1200&auto=format&fit=crop"
-    ]
+    ],
+    "streetViewEmbed": "https://www.google.com/maps/embed?pb=!4v1757068075507!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ0V6c08zSWc.!2m2!1d27.30891943909927!2d88.29787983128344!3f243.99861895178884!4f-9.081742215567246!5f0.7820865974627469"
   },
   {
     "id": "enchey",
