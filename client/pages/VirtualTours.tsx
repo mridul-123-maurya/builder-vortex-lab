@@ -25,7 +25,22 @@ export default function VirtualTours() {
     };
   }, [isInteracting, items.length]);
 
-  const src = (items[index] as any).streetViewEmbed || (items[index] as any).pano || "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg";
+  const current = items[index] as any;
+  const panoSrc = current.pano || "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg";
+
+  // helpers for iframe interaction detection
+  let iframeTimeout: number | null = null;
+  const startIframeInteract = () => {
+    if (iframeTimeout) {
+      window.clearTimeout(iframeTimeout);
+      iframeTimeout = null;
+    }
+    setIsInteracting(true);
+  };
+  const stopIframeInteract = () => {
+    if (iframeTimeout) window.clearTimeout(iframeTimeout);
+    iframeTimeout = window.setTimeout(() => setIsInteracting(false), 2000);
+  };
 
   return (
     <div className="container py-10">
@@ -40,7 +55,28 @@ export default function VirtualTours() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div className="rounded-xl border overflow-hidden">
-          <PanoViewer src={src} height={420} onInteractionChange={setIsInteracting} />
+          {current.streetViewEmbed ? (
+            <div style={{ height: 420 }} className="w-full rounded-b-xl overflow-hidden">
+              <iframe
+                src={current.streetViewEmbed}
+                className="w-full h-full"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                onMouseDown={startIframeInteract}
+                onTouchStart={startIframeInteract}
+                onMouseEnter={startIframeInteract}
+                onFocus={startIframeInteract}
+                onMouseUp={stopIframeInteract}
+                onTouchEnd={stopIframeInteract}
+                onMouseLeave={stopIframeInteract}
+                title={current.name + " street view"}
+              />
+            </div>
+          ) : (
+            <PanoViewer src={panoSrc} height={420} onInteractionChange={setIsInteracting} />
+          )}
           <div className="p-4 text-sm text-muted-foreground">
             Drag to look around. Use the fullscreen button for an immersive
             view.
