@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +11,6 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
   const [videoPreviews, setVideoPreviews] = useState<string[]>([]);
   const [panoFile, setPanoFile] = useState<File | null>(null);
   const [panoPreview, setPanoPreview] = useState("");
-  const [panoUrl, setPanoUrl] = useState("");
 
   const fileToDataUrl = (file: File) =>
     new Promise<string>((res, rej) => {
@@ -57,7 +54,6 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
     setPanoFile(f);
     const data = await fileToDataUrl(f);
     setPanoPreview(data);
-    setPanoUrl("");
   };
 
   const removeImage = (index: number) => {
@@ -86,7 +82,7 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
     try {
       const images = await Promise.all(imageFiles.map((f) => fileToDataUrl(f)));
       const videos = await Promise.all(videoFiles.map((f) => fileToDataUrl(f)));
-      const pano = panoFile ? await fileToDataUrl(panoFile) : panoUrl.trim() || undefined;
+      const pano = panoFile ? await fileToDataUrl(panoFile) : undefined;
       const data = {
         images: images.filter(Boolean),
         videos: videos.filter(Boolean),
@@ -102,7 +98,6 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
       setVideoPreviews([]);
       setPanoFile(null);
       setPanoPreview("");
-      setPanoUrl("");
     } catch (e) {
       console.error("Failed to save contribution", e);
     }
@@ -116,7 +111,7 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>Contribute photos, videos, or 360°</DialogTitle>
-          <DialogDescription>Upload files from your device or provide a URL. Files are stored locally for this demo.</DialogDescription>
+          <DialogDescription>Upload files from your device. Files are stored locally for this demo.</DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-4">
@@ -200,11 +195,10 @@ export default function ContributeDialog({ tourId, onSaved }: { tourId: string; 
                 Upload panorama
               </label>
               <div className="flex-1">
-                <Input value={panoUrl} onChange={(e) => { setPanoUrl(e.target.value); if (e.target.value) { setPanoFile(null); setPanoPreview(""); } }} placeholder="Or paste Google Maps embed URL or panorama image URL" />
                 {panoPreview ? (
                   <img src={panoPreview} alt="pano-preview" className="mt-3 w-full h-44 object-cover rounded" />
                 ) : (
-                  panoUrl && <div className="mt-3 text-sm text-muted-foreground">Using URL preview (will be embedded if valid).</div>
+                  <div className="mt-3 text-sm text-muted-foreground">Upload a panorama image (equirectangular) to be used as the 360° view.</div>
                 )}
               </div>
             </div>
