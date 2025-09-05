@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from "react";
 import LanguageSelector from "@/components/LanguageSelector";
 import TourCard, { type Tour } from "@/components/TourCard";
 import tours from "@/data/tours.json";
@@ -5,6 +6,27 @@ import PanoViewer from "@/components/PanoViewer";
 
 export default function VirtualTours() {
   const items = tours as Tour[];
+  const [index, setIndex] = useState(0);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const intervalRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    // rotate every 6 seconds when not interacting
+    const rotate = () => {
+      if (isInteracting) return;
+      setIndex((i) => (i + 1) % items.length);
+    };
+    intervalRef.current = window.setInterval(rotate, 6000);
+    return () => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [isInteracting, items.length]);
+
+  const src = (items[index] as any).streetViewEmbed || (items[index] as any).pano || "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg";
+
   return (
     <div className="container py-10">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -18,13 +40,7 @@ export default function VirtualTours() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div className="rounded-xl border overflow-hidden">
-          <PanoViewer
-            src={
-              (items[0] as any).pano ||
-              "https://photo-sphere-viewer-data.netlify.app/assets/spheremountains.jpg"
-            }
-            height={420}
-          />
+          <PanoViewer src={src} height={420} onInteractionChange={setIsInteracting} />
           <div className="p-4 text-sm text-muted-foreground">
             Drag to look around. Use the fullscreen button for an immersive
             view.
@@ -36,8 +52,10 @@ export default function VirtualTours() {
             Browse and start a tour.
           </p>
           <div className="mt-3 grid gap-4 sm:grid-cols-2">
-            {items.slice(0, 4).map((tour) => (
-              <TourCard key={tour.id} tour={tour} />
+            {items.slice(0, 4).map((tour, i) => (
+              <div key={tour.id} onClick={() => setIndex(i)}>
+                <TourCard tour={tour} />
+              </div>
             ))}
           </div>
         </div>
