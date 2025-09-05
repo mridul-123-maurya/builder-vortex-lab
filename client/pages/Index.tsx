@@ -78,29 +78,6 @@ export default function Index() {
                     </Button>
                   </div>
 
-                  <div className="flex items-center gap-3 mt-2 sm:mt-0">
-                    <a
-                      href="https://www.makemytrip.com/holidays-india/sikkim-travel-packages.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 hover:shadow-md"
-                      aria-label="MakeMyTrip"
-                    >
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/MakeMyTrip_Logo.svg/256px-MakeMyTrip_Logo.svg.png" alt="MakeMyTrip" className="h-6 w-auto object-contain" />
-                      <span className="text-sm font-medium">MakeMyTrip</span>
-                    </a>
-
-                    <a
-                      href="https://www.tripadvisor.in/Attractions-g297672-Activities-c42-Sikkim.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 hover:shadow-md"
-                      aria-label="Tripadvisor"
-                    >
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Tripadvisor_Logo_circle-green_horizontal-lockup_registered_RGB.svg/512px-Tripadvisor_Logo_circle-green_horizontal-lockup_registered_RGB.svg.png" alt="Tripadvisor" className="h-6 w-auto object-contain" />
-                      <span className="text-sm font-medium">Tripadvisor</span>
-                    </a>
-                  </div>
                 </div>
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
