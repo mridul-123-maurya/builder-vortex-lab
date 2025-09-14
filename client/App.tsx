@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import VirtualTours from "./pages/VirtualTours";
 import TourDetail from "./pages/TourDetail";
-import PlaceholderPage from "./pages/PlaceholderPage";
+import MapPage from "./pages/MapPage";
 import MainLayout from "@/components/MainLayout";
 import { I18nProvider } from "@/context/i18n";
 
@@ -28,10 +28,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/tours" element={<VirtualTours />} />
               <Route path="/tours/:id" element={<TourDetail />} />
-              <Route
-                path="/map"
-                element={<PlaceholderPage title="Interactive Map" />}
-              />
+              <Route path="/map" element={<MapPage />} />
               <Route
                 path="/archives"
                 element={<PlaceholderPage title="Digital Archives" />}
