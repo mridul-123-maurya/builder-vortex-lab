@@ -60,4 +60,10 @@ const App = () => (
   </QueryClientProvider>
 );
 
-createRoot(document.getElementById("root")!).render(<App />);
+const container = document.getElementById("root")!;
+let root = (window as any).__appRoot;
+if (!root) {
+  root = createRoot(container);
+  (window as any).__appRoot = root;
+}
+root.render(<App />);
