@@ -28,32 +28,32 @@ const App = () => (
           <BrowserRouter>
             <MainLayout>
               <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/tours" element={<VirtualTours />} />
-              <Route path="/tours/:id" element={<TourDetail />} />
-              <Route path="/map" element={<MapPage />} />
-              <Route
-                path="/archives"
-                element={<PlaceholderPage title="Digital Archives" />}
-              />
-              <Route
-                path="/calendar"
-                element={<PlaceholderPage title="Cultural Calendar" />}
-              />
-              <Route
-                path="/audio"
-                element={<PlaceholderPage title="Smart Audio Guide" />}
-              />
-              <Route
-                path="/services"
-                element={<PlaceholderPage title="Tourist Services" />}
-              />
-              <Route
-                path="/about"
-                element={<PlaceholderPage title="About & Community" />}
-              />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+                <Route path="/" element={<Index />} />
+                <Route path="/tours" element={<VirtualTours />} />
+                <Route path="/tours/:id" element={<TourDetail />} />
+                <Route path="/map" element={<MapPage />} />
+                <Route
+                  path="/archives"
+                  element={<PlaceholderPage title="Digital Archives" />}
+                />
+                <Route
+                  path="/calendar"
+                  element={<PlaceholderPage title="Cultural Calendar" />}
+                />
+                <Route
+                  path="/audio"
+                  element={<PlaceholderPage title="Smart Audio Guide" />}
+                />
+                <Route
+                  path="/services"
+                  element={<PlaceholderPage title="Tourist Services" />}
+                />
+                <Route
+                  path="/about"
+                  element={<PlaceholderPage title="About & Community" />}
+                />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </MainLayout>
           </BrowserRouter>
