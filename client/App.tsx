@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import VirtualTours from "./pages/VirtualTours";
 import TourDetail from "./pages/TourDetail";
 import MapPage from "./pages/MapPage";
+import PlaceholderPage from "./pages/PlaceholderPage";
 import MainLayout from "@/components/MainLayout";
 import { I18nProvider } from "@/context/i18n";
 
