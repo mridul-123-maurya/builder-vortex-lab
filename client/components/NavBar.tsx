@@ -130,22 +130,46 @@ function Dropdown({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const closeTimeout = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeout.current) window.clearTimeout(closeTimeout.current);
+    };
+  }, []);
+
+  const openMenu = () => {
+    if (closeTimeout.current) {
+      window.clearTimeout(closeTimeout.current);
+      closeTimeout.current = null;
+    }
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    if (closeTimeout.current) window.clearTimeout(closeTimeout.current);
+    closeTimeout.current = window.setTimeout(() => setOpen(false), 200);
+  };
+
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
+      onFocus={openMenu}
+      onBlur={scheduleClose}
     >
       <button
         className="inline-flex items-center gap-1 text-sm hover:text-primary"
         aria-haspopup="menu"
         aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
       >
         {label}
         <ChevronDown className="h-4 w-4" />
       </button>
       {open && (
-        <div className="absolute left-0 mt-2 w-56 rounded-md border bg-popover p-1 shadow-lg">
+        <div className="absolute left-0 mt-1 w-56 rounded-md border bg-popover p-1 shadow-lg" onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
           {children}
         </div>
       )}
