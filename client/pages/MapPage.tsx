@@ -200,13 +200,10 @@ export default function MapPage() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 flex gap-3">
-                  <Link to={`/tours/${tour.id}`} className="inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium border border-border bg-white text-foreground hover:shadow-sm transition-colors dark:bg-secondary/30 dark:text-card-foreground dark:border-border">
+                <div className="mt-4">
+                  <Link to={`/tours/${tour.id}`} className="inline-flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-medium border border-border bg-white text-foreground hover:shadow-sm transition-colors dark:bg-secondary/30 dark:text-card-foreground dark:border-border">
                     Virtual Tour
                   </Link>
-                  <a href={tour.streetViewEmbed || tour.streetView || "#"} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary to-accent shadow-md hover:brightness-95 transition-all">
-                    Visit
-                  </a>
                 </div>
               </div>
             );
