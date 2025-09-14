@@ -89,7 +89,7 @@ export default function NavBar() {
           <ThemeToggle />
           <LanguageSelector />
           <Button
-            className="hidden md:inline-flex bg-primary text-primary-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition"
+            className="hidden md:inline-flex bg-gradient-to-r from-primary to-accent text-primary-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition focus-visible:ring-4 focus-visible:ring-primary/30"
             asChild
           >
             <Link to="/tours">{t("exploreNow")}</Link>
