@@ -14,6 +14,7 @@ import MapPage from "./pages/MapPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import MainLayout from "@/components/MainLayout";
 import { I18nProvider } from "@/context/i18n";
+import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
 
@@ -23,9 +24,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <I18nProvider>
-        <BrowserRouter>
-          <MainLayout>
-            <Routes>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <BrowserRouter>
+            <MainLayout>
+              <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/tours" element={<VirtualTours />} />
               <Route path="/tours/:id" element={<TourDetail />} />
@@ -52,9 +54,10 @@ const App = () => (
               />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </MainLayout>
-        </BrowserRouter>
+              </Routes>
+            </MainLayout>
+          </BrowserRouter>
+        </ThemeProvider>
       </I18nProvider>
     </TooltipProvider>
   </QueryClientProvider>
