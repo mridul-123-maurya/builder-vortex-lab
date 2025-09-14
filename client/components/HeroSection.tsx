@@ -30,7 +30,7 @@ export default function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+              className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition focus-visible:ring-4 focus-visible:ring-primary/30"
               asChild
             >
               <Link to="/tours">{t("exploreNow")}</Link>
