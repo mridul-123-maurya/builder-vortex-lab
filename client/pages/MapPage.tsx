@@ -6,7 +6,7 @@ function loadLeaflet(): Promise<void> {
   if ((window as any)._leafletLoading) return (window as any)._leafletLoading;
   const promise = new Promise<void>((resolve, reject) => {
     // load css
-    if (!document.querySelector('link[data-leaflet-css]')) {
+    if (!document.querySelector("link[data-leaflet-css]")) {
       const link = document.createElement("link");
       link.rel = "stylesheet";
       link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
@@ -15,10 +15,12 @@ function loadLeaflet(): Promise<void> {
     }
     // load script
     if ((window as any).L) return resolve();
-    const existing = document.querySelector('script[data-leaflet-js]');
+    const existing = document.querySelector("script[data-leaflet-js]");
     if (existing) {
       existing.addEventListener("load", () => resolve());
-      existing.addEventListener("error", () => reject(new Error("Failed to load Leaflet JS")));
+      existing.addEventListener("error", () =>
+        reject(new Error("Failed to load Leaflet JS")),
+      );
       return;
     }
     const script = document.createElement("script");
@@ -82,13 +84,19 @@ export default function MapPage() {
         const positions: [number, number][] = [];
 
         items.forEach((tour, i) => {
-          const coords = parseCoordsFromEmbed(tour.streetViewEmbed) || parseCoordsFromEmbed(tour.streetView) || null;
+          const coords =
+            parseCoordsFromEmbed(tour.streetViewEmbed) ||
+            parseCoordsFromEmbed(tour.streetView) ||
+            null;
           let latlng: [number, number];
           if (coords) latlng = coords;
           else {
             // fallback: jitter around default center so markers are visible
             const jitter = (i % 10) * 0.0025;
-            latlng = [defaultCenter[0] + jitter, defaultCenter[1] + (i % 5) * 0.0025 - 0.005];
+            latlng = [
+              defaultCenter[0] + jitter,
+              defaultCenter[1] + (i % 5) * 0.0025 - 0.005,
+            ];
           }
           positions.push(latlng);
           const marker = L.marker(latlng).addTo(map);
@@ -134,7 +142,9 @@ export default function MapPage() {
   return (
     <div className="container py-10">
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-3xl md:text-4xl font-bold">Interactive Map</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-bold">
+          Interactive Map
+        </h1>
         <div>
           <Link to="/tours" className="text-sm text-primary underline">
             Back to Virtual Tours
@@ -142,7 +152,10 @@ export default function MapPage() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl overflow-hidden border" style={{ height: 600 }}>
+      <div
+        className="mt-6 rounded-xl overflow-hidden border"
+        style={{ height: 600 }}
+      >
         <div ref={containerRef} style={{ width: "100%", height: "100%" }} />
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
