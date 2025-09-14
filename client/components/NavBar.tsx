@@ -5,6 +5,7 @@ import { ChevronDown, Menu } from "lucide-react";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useI18n } from "@/context/i18n";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function NavBar() {
   const { t } = useI18n();
@@ -68,6 +69,7 @@ export default function NavBar() {
           </NavLink>
         </nav>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <LanguageSelector />
           <Button
             className="hidden md:inline-flex bg-primary text-primary-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition"
