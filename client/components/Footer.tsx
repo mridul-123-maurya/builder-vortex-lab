@@ -4,8 +4,14 @@ export default function Footer() {
       <div className="container py-8 grid gap-6 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2 font-extrabold text-lg">
-            <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground font-bold">
-              卍
+            <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground">
+              <svg aria-hidden className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2l4 3h-3v2h-2V5H8l4-3z"/>
+                <path d="M5 9h14l-2 2H7L5 9z"/>
+                <path d="M6 11h12v7H6z"/>
+                <path d="M10 14h4v4h-4z"/>
+                <path d="M4 20h16v2H4z"/>
+              </svg>
             </span>
             Monastery360
           </div>
