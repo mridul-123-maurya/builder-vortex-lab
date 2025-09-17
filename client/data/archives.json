@@ -5,7 +5,8 @@
     "monastery": "Rumtek Monastery",
     "century": "18th c.",
     "type": "text",
-    "thumbnail": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=800&auto=format&fit=crop"
+    "thumbnail": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=800&auto=format&fit=crop",
+    "wikipedia": "https://en.wikipedia.org/wiki/Lotus_Sutra"
   },
   {
     "id": "mural-002",
@@ -13,7 +14,8 @@
     "monastery": "Pemayangtse Monastery",
     "century": "17th c.",
     "type": "image",
-    "thumbnail": "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=800&auto=format&fit=crop"
+    "thumbnail": "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=800&auto=format&fit=crop",
+    "wikipedia": "https://en.wikipedia.org/wiki/Avalokite%C5%9Bvara"
   },
   {
     "id": "recording-003",
@@ -21,6 +23,7 @@
     "monastery": "Tashiding Monastery",
     "century": "20th c.",
     "type": "audio",
-    "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F2bc642b8de1f4ba8a1b7c90f6329e3f8%2Faffda4b04a6b4cd8aa80a8e9e64d319f?format=webp&width=800"
+    "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F2bc642b8de1f4ba8a1b7c90f6329e3f8%2Faffda4b04a6b4cd8aa80a8e9e64d319f?format=webp&width=800",
+    "wikipedia": "https://en.wikipedia.org/wiki/Buddhist_chant"
   }
 ]
