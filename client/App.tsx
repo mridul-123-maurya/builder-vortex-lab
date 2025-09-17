@@ -43,7 +43,7 @@ const App = () => (
               />
               <Route
                 path="/audio"
-                element={<PlaceholderPage title="Smart Audio Guide" />}
+                element={<SmartAudioGuide />}
               />
               <Route
                 path="/services"
