@@ -180,7 +180,16 @@ function FestivalCard({ festival }: { festival: Festival }) {
         </a>
 
         <Button asChild variant="default" size="sm">
-          <Link to={festival.bookingUrl || "/services"}>Book Trip</Link>
+          <Link to={festival.bookingUrl || "/services"} className="inline-flex items-center gap-2">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/MakeMyTrip_Logo.svg/256px-MakeMyTrip_Logo.svg.png"
+              alt="MakeMyTrip"
+              className="h-4 w-auto rounded-[2px] bg-white p-[1px]"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>Book Trip</span>
+          </Link>
         </Button>
 
       </div>
