@@ -122,7 +122,6 @@ function FestivalCard({ festival }: { festival: Festival }) {
           <Link to={festival.bookingUrl || "/services"}>Book Trip</Link>
         </Button>
 
-        <div className="ml-auto text-xs text-muted-foreground">ID: {festival.id}</div>
       </div>
     </article>
   );
