@@ -46,7 +46,7 @@ const DICT = {
     placeholder: "मठों, मार्गों या आने वाले त्योहारों के बारे में पूछें…",
     send: "भेजें",
     speak: "आवाज़ में सुनाएँ",
-    language: "भाष���",
+    language: "भाषा",
     suggestions: "सुझाव",
     eventsIntro: "आगामी आयोजन:",
     toursIntro: "प्रमुख मठ:",
@@ -65,7 +65,7 @@ const DICT = {
     toursIntro: "लोकप्रिय मठहरू:",
     calendarCta: "सांस्कृतिक पात्रो हेर्नुहोस्",
     notFound:
-      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस���तै: 'रुमटेकबारे बताऊ' वा 'आगामी पर्व'।",
+      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस्तै: 'रुमटेकबारे बताऊ' वा 'आगामी पर्व'।",
   },
   bo: {
     title: "རྣམ་གྲངས་སྒྲ་སྒྲིག",
@@ -238,13 +238,31 @@ export default function SmartAudioGuide() {
               placeholder={strings.placeholder}
               className="min-h-[44px] max-h-40"
             />
+            <Button
+              type="button"
+              variant="secondary"
+              size="icon"
+              className={"h-10 w-10 " + (recog.listening ? "animate-pulse ring-2 ring-primary/40" : "")}
+              onClick={() => (recog.listening ? recog.stop() : recog.start())}
+              disabled={!recog.supported}
+              aria-label={recog.listening ? "Stop voice input" : "Start voice input"}
+              title={recog.supported ? (recog.listening ? "Stop" : "Speak") : "Voice input not supported in this browser"}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                <path d="M12 14a3 3 0 0 0 3-3V7a3 3 0 1 0-6 0v4a3 3 0 0 0 3 3z" />
+                <path d="M5 11a1 1 0 1 0-2 0 9 9 0 0 0 8 8v3h2v-3a9 9 0 0 0 8-8 1 1 0 1 0-2 0 7 7 0 1 1-14 0z" />
+              </svg>
+            </Button>
             <Button onClick={() => handleSend(input)} className="h-10">
               {strings.send}
             </Button>
           </div>
 
-          <div className="mt-2 text-xs text-muted-foreground">
-            {strings.calendarCta}: <Link to="/calendar" className="underline">/calendar</Link>
+          <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
+            {recog.listening && <span>Listening…</span>}
+            <span>
+              {strings.calendarCta}: <Link to="/calendar" className="underline">/calendar</Link>
+            </span>
           </div>
         </div>
       </div>
