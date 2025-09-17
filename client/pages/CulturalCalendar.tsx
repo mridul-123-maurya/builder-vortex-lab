@@ -54,6 +54,66 @@ const festivals: Festival[] = [
     wikipediaUrl: "https://en.wikipedia.org/wiki/Choskar",
     bookingUrl: "/services",
   },
+  {
+    id: "pang-lhabsol",
+    name: "Pang Lhabsol",
+    date: "2025-08-30",
+    location: "Gangtok / Rabong",
+    description:
+      "Pang Lhabsol honors Mount Khangchendzonga with masked dances and prayers for protection and unity across communities in Sikkim.",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Pang_Lhabsol",
+    bookingUrl: "/services",
+  },
+  {
+    id: "drukpa-teshi",
+    name: "Drukpa Teshi",
+    date: "2025-07-31",
+    location: "Ravangla / Namchi",
+    description:
+      "Drukpa Teshi marks the day the Buddha first taught the Four Noble Truths; observed with prayers and Dharma discourses.",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Drukpa_Teshi",
+    bookingUrl: "/services",
+  },
+  {
+    id: "hemis-festival",
+    name: "Hemis Festival",
+    date: "2025-06-20",
+    location: "Hemis Monastery, Ladakh",
+    description:
+      "Hemis Festival celebrates Guru Padmasambhava with vibrant cham dances, thangka displays, and traditional music.",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Hemis_festival",
+    bookingUrl: "/services",
+  },
+  {
+    id: "lhabab-duchen",
+    name: "Lhabab Düchen",
+    date: "2025-11-10",
+    location: "Multiple Monasteries",
+    description:
+      "Lhabab Düchen commemorates the Buddha’s descent from the heavenly realm; a day of merit-making and special rituals.",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Lhabab_D%C3%BCchen",
+    bookingUrl: "/services",
+  },
+  {
+    id: "kagyed-dance",
+    name: "Kagyed Dance",
+    date: "2025-12-05",
+    location: "Phodong / Rumtek",
+    description:
+      "Kagyed is a masked cham dance performed before Losoong, symbolizing the destruction of evil and welcoming peace.",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Kagyed_Dance",
+    bookingUrl: "/services",
+  },
+  {
+    id: "losoong",
+    name: "Losoong / Namsoong",
+    date: "2025-12-15",
+    location: "Sikkim",
+    description:
+      "Losoong marks the Sikkimese New Year and the end of the harvest season with traditional games, dances, and community feasts.",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Losoong",
+    bookingUrl: "/services",
+  },
 ];
 
 function CalendarHeader({ count }: { count: number }) {
