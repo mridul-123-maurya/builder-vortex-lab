@@ -96,7 +96,11 @@ export default function DigitalArchives() {
               </CardHeader>
               <CardContent className="pt-0 flex items-center justify-between">
                 <Badge variant="secondary" className="capitalize">{it.type}</Badge>
-                <a href="#" className="text-sm text-primary underline">Details</a>
+                {it.wikipedia ? (
+                  <a href={it.wikipedia} target="_blank" rel="noreferrer" className="text-sm text-primary underline">Wikipedia</a>
+                ) : (
+                  <span className="text-sm text-muted-foreground">No link</span>
+                )}
               </CardContent>
             </Card>
           ))}
