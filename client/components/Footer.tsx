@@ -3,17 +3,30 @@ export default function Footer() {
     <footer className="mt-16 border-t bg-background/70">
       <div className="container py-8 grid gap-6 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2 font-extrabold text-lg">
-            <span className="inline-flex size-8 items-center justify-center rounded-md bg-accent text-accent-foreground">
-              <svg aria-hidden className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2l4 3h-3v2h-2V5H8l4-3z"/>
-                <path d="M5 9h14l-2 2H7L5 9z"/>
-                <path d="M6 11h12v7H6z"/>
-                <path d="M10 14h4v4h-4z"/>
-                <path d="M4 20h16v2H4z"/>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent shadow-md">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <path
+                  d="M12 2C10.3431 2 9 3.34315 9 5C9 6.65685 10.3431 8 12 8C13.6569 8 15 6.65685 15 5C15 3.34315 13.6569 2 12 2Z"
+                  fill="white"
+                />
+                <path
+                  d="M6 11C6 9 8 7 12 7C16 7 18 9 18 11C18 15 12 17 12 21C12 17 6 15 6 11Z"
+                  fill="rgba(255,255,255,0.95)"
+                />
               </svg>
-            </span>
-            Monastery360
+            </div>
+            <div className="flex flex-col leading-tight font-extrabold">
+              <span className="text-lg tracking-tight">Monastery</span>
+              <span className="text-xs text-muted-foreground font-medium">360° Tours</span>
+            </div>
           </div>
           <p className="mt-3 text-sm text-muted-foreground max-w-sm">
             A digital heritage platform to explore the monasteries of Sikkim
