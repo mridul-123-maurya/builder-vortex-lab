@@ -65,7 +65,7 @@ const DICT = {
     toursIntro: "लोकप्रिय मठहरू:",
     calendarCta: "सांस्कृतिक पात्रो हेर्नुहोस्",
     notFound:
-      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस्तै: 'रुमटेकबारे बताऊ' वा 'आगामी पर्व'।",
+      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस्तै: 'रुमट���कबारे बताऊ' वा 'आगामी पर्व'।",
   },
   bo: {
     title: "རྣམ་གྲངས་སྒྲ་སྒྲིག",
@@ -87,12 +87,53 @@ function useSpeech(enabled: boolean, lang: string) {
     if (!enabled || typeof window === "undefined" || !("speechSynthesis" in window))
       return;
     const utter = new SpeechSynthesisUtterance(text);
-    // Prefer regional voices if available
     utter.lang = lang === "hi" ? "hi-IN" : lang === "ne" ? "ne-NP" : lang === "bo" ? "bo" : "en-IN";
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
   };
   return { speak };
+}
+
+function bcp47(lang: string) {
+  return lang === "hi" ? "hi-IN" : lang === "ne" ? "ne-NP" : lang === "bo" ? "bo" : "en-IN";
+}
+
+function useSpeechRecognition(lang: string, onText: (text: string) => void) {
+  const [listening, setListening] = useState(false);
+  const supported = typeof window !== "undefined" &&
+    ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+
+  const start = () => {
+    if (!supported || listening) return;
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const rec = new SR();
+    rec.lang = bcp47(lang);
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+    setListening(true);
+    rec.onresult = (e: any) => {
+      const text = e.results?.[0]?.[0]?.transcript || "";
+      if (text) onText(text);
+    };
+    rec.onerror = () => setListening(false);
+    rec.onend = () => setListening(false);
+    try {
+      rec.start();
+    } catch {
+      setListening(false);
+    }
+  };
+
+  const stop = () => {
+    if (!(window as any).speechSynthesis) {
+      setListening(false);
+      return;
+    }
+    // Best-effort stop by toggling flag; instance auto-stops onend
+    setListening(false);
+  };
+
+  return { start, stop, listening, supported: Boolean(supported) };
 }
 
 export default function SmartAudioGuide() {
