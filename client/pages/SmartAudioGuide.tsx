@@ -45,7 +45,7 @@ const DICT = {
     title: "स्मार्ट ऑडियो गाइड",
     placeholder: "मठों, मार्गों या आने वाले त्योहारों के बारे में पूछें…",
     send: "भेजें",
-    speak: "आवाज़ में सुनाएँ",
+    speak: "आवाज़ में सुना��ँ",
     language: "भाषा",
     suggestions: "सुझाव",
     eventsIntro: "आगामी आयोजन:",
@@ -65,7 +65,7 @@ const DICT = {
     toursIntro: "लोकप्रिय मठहरू:",
     calendarCta: "सांस्कृतिक पात्रो हेर्नुहोस्",
     notFound:
-      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस्तै: 'रुमटेकबारे बताऊ' वा 'आगामी पर्व'।",
+      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद���दत गर्छु। जस्तै: 'रुमटेकबारे बताऊ' वा 'आगामी पर्व'।",
   },
   bo: {
     title: "རྣམ་གྲངས་སྒྲ་སྒྲིག",
@@ -281,11 +281,37 @@ function QuickChip({ children, onClick }: { children: React.ReactNode; onClick: 
   );
 }
 
+function includesName(q: string, name: string) {
+  const qlc = q.toLowerCase();
+  const tokens = name.toLowerCase().split(/[^a-z0-9]+/).filter((t) => t.length > 2);
+  return tokens.every((t) => qlc.includes(t));
+}
+
+function findTour(q: string) {
+  return tours.find((t) => includesName(q, t.name) || q.toLowerCase().includes(t.id));
+}
+
+function findEvent(q: string) {
+  return events.find((e) => includesName(q, e.name) || q.toLowerCase().includes(e.id));
+}
+
 function generateReply(q: string, lang: "en" | "hi" | "ne" | "bo") {
   const lc = q.toLowerCase();
 
-  // Festivals / events
+  // Direct intents
+  const askWhen = /(when|kab|कब|कहिले|གང་དུ)\b/.test(lc);
+  const askWhere = /(where|kahaan|कहाँ|कहाँ|कता|གནས་ས)\b/.test(lc);
+  const askWhat = /(what|tell me|kaun|क्या|के हो|ཅི་ཡིན)\b/.test(lc);
+  const askBook = /(book|tickets?|trip|tour|booking|reserve|बुक)/.test(lc);
+
+  // Events scope
   if (lc.includes("festival") || lc.includes("event") || lc.includes("calendar")) {
+    const match = findEvent(lc);
+    if (match) {
+      if (askWhen) return `${match.name} — ${match.date} at ${match.location}${match.monastery ? ", " + match.monastery : ""}. More at /calendar.`;
+      if (askWhere) return `${match.name} is at ${match.location}${match.monastery ? ", " + match.monastery : ""}. More at /calendar.`;
+      return `${DICT[lang].eventsIntro}\n• ${match.name} — ${match.date} (${match.location}${match.monastery ? ", " + match.monastery : ""})\n→ /calendar`;
+    }
     const head = DICT[lang].eventsIntro;
     const list = events
       .map((e) => `• ${e.name} — ${e.date} (${e.location}${e.monastery ? ", " + e.monastery : ""})`)
@@ -293,8 +319,15 @@ function generateReply(q: string, lang: "en" | "hi" | "ne" | "bo") {
     return `${head}\n${list}\n→ /calendar`;
   }
 
-  // Tours list
-  if (lc.includes("popular") || lc.includes("monasteries") || lc === "tours") {
+  // Tours scope
+  if (lc.includes("monastery") || lc.includes("monasteries") || lc.includes("tour") || lc === "tours" || lc.includes("rumtek") || lc.includes("monastery")) {
+    const match = findTour(lc);
+    if (match) {
+      if (askWhere) return `${match.name} is in ${match.location}.`;
+      if (askWhat) return `${match.name} — ${match.location}${match.century ? ", " + match.century : ""}. Explore 360° tour at /tours/${match.id}.`;
+      if (askBook) return `You can book a trip from Tourist Services → /services. Also explore /tours/${match.id}.`;
+      return `${match.name} — ${match.location}${match.century ? ", " + match.century : ""}. See 360° tour at /tours/${match.id}.`;
+    }
     const head = DICT[lang].toursIntro;
     const list = tours
       .slice(0, 6)
@@ -303,11 +336,14 @@ function generateReply(q: string, lang: "en" | "hi" | "ne" | "bo") {
     return `${head}\n${list}`;
   }
 
-  // Specific monastery
-  const hit = tours.find((t) => lc.includes(t.name.toLowerCase()) || lc.includes(t.id));
-  if (hit) {
-    return `${hit.name} — ${hit.location}${hit.century ? ", " + hit.century : ""}. Explore the 360° tour at /tours/${hit.id}.`;
-  }
+  // Booking intent
+  if (askBook) return `You can book trips under Tourist Services at /services.`;
+
+  // Try entity-first
+  const hitTour = findTour(lc);
+  if (hitTour) return `${hitTour.name} — ${hitTour.location}${hitTour.century ? ", " + hitTour.century : ""}. Explore the 360° tour at /tours/${hitTour.id}.`;
+  const hitEvent = findEvent(lc);
+  if (hitEvent) return `${hitEvent.name} — ${hitEvent.date} at ${hitEvent.location}${hitEvent.monastery ? ", " + hitEvent.monastery : ""}. More at /calendar.`;
 
   return DICT[lang].notFound;
 }
