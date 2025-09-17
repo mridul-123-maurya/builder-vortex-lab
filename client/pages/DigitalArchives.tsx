@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
   century?: string;
   type: "text" | "image" | "audio" | string;
   thumbnail?: string;
+  wikipedia?: string;
 };
 
 const allItems = archivesData as unknown as ArchiveItem[];
