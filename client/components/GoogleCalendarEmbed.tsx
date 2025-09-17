@@ -47,7 +47,8 @@ export default function GoogleCalendarEmbed({
         </div>
       ) : (
         <div className="px-4 py-6 text-sm text-muted-foreground border-t">
-          Add a public Google Calendar ID to VITE_GOOGLE_CALENDAR_ID to show upcoming events.
+          Add a public Google Calendar ID to VITE_GOOGLE_CALENDAR_ID to show
+          upcoming events.
         </div>
       )}
     </section>

@@ -119,19 +119,34 @@ const festivals: Festival[] = [
 function CalendarHeader({ count }: { count: number }) {
   return (
     <header className="mb-6">
-      <h1 className="font-display text-3xl md:text-4xl font-bold">Cultural Calendar</h1>
-      <p className="text-muted-foreground mt-2">Upcoming festivals and cultural events — discover dates, locations, and how to join.</p>
+      <h1 className="font-display text-3xl md:text-4xl font-bold">
+        Cultural Calendar
+      </h1>
+      <p className="text-muted-foreground mt-2">
+        Upcoming festivals and cultural events — discover dates, locations, and
+        how to join.
+      </p>
       <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="rounded-full bg-primary/10 text-primary px-3 py-1 text-sm font-medium">{count} events</div>
-          <div className="text-sm text-muted-foreground">Plan ahead and book early for the best experience.</div>
+          <div className="rounded-full bg-primary/10 text-primary px-3 py-1 text-sm font-medium">
+            {count} events
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Plan ahead and book early for the best experience.
+          </div>
         </div>
       </div>
     </header>
   );
 }
 
-function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) => void }) {
+function SearchBar({
+  query,
+  setQuery,
+}: {
+  query: string;
+  setQuery: (v: string) => void;
+}) {
   return (
     <div className="mt-4">
       <label className="sr-only">Search events</label>
@@ -142,7 +157,9 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
           placeholder="Search festivals, locations, or dates"
           className="w-full rounded-full border border-input bg-background px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
         />
-        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-muted-foreground">Press Enter</div>
+        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-muted-foreground">
+          Press Enter
+        </div>
       </div>
     </div>
   );
@@ -153,21 +170,42 @@ function FestivalCard({ festival }: { festival: Festival }) {
     <article className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-white/60 to-white/40 dark:from-slate-900 dark:to-slate-800 p-6 shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
       <div className="flex items-start gap-4">
         <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M5 13l4 4L19 7"
+            />
           </svg>
         </div>
 
         <div className="min-w-0">
-          <h3 className="text-lg font-semibold leading-tight">{festival.name}</h3>
+          <h3 className="text-lg font-semibold leading-tight">
+            {festival.name}
+          </h3>
           <div className="mt-1 flex items-center gap-3 text-sm text-muted-foreground">
-            {festival.date && <span className="rounded-full bg-muted/10 px-2 py-0.5 font-medium">{festival.date}</span>}
-            {festival.location && <span className="text-sm">{festival.location}</span>}
+            {festival.date && (
+              <span className="rounded-full bg-muted/10 px-2 py-0.5 font-medium">
+                {festival.date}
+              </span>
+            )}
+            {festival.location && (
+              <span className="text-sm">{festival.location}</span>
+            )}
           </div>
         </div>
       </div>
 
-      <p className="mt-4 text-sm text-muted-foreground">{festival.description}</p>
+      <p className="mt-4 text-sm text-muted-foreground">
+        {festival.description}
+      </p>
 
       <div className="mt-5 flex items-center gap-3">
         <a
@@ -180,7 +218,10 @@ function FestivalCard({ festival }: { festival: Festival }) {
         </a>
 
         <Button asChild variant="default" size="sm">
-          <Link to={festival.bookingUrl || "/services"} className="inline-flex items-center gap-2">
+          <Link
+            to={festival.bookingUrl || "/services"}
+            className="inline-flex items-center gap-2"
+          >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F2bc642b8de1f4ba8a1b7c90f6329e3f8%2F4720fcc432eb4d08ae9dfa98959484a5?format=webp&width=64"
               alt="MakeMyTrip"
@@ -191,7 +232,6 @@ function FestivalCard({ festival }: { festival: Festival }) {
             <span>Book Trip</span>
           </Link>
         </Button>
-
       </div>
     </article>
   );
@@ -213,7 +253,8 @@ export default function CulturalCalendar() {
   }, [query]);
 
   const gcalId = import.meta.env.VITE_GOOGLE_CALENDAR_ID as string | undefined;
-  const timeZone = (import.meta as any).env?.VITE_GOOGLE_CALENDAR_TZ || "Asia/Kolkata";
+  const timeZone =
+    (import.meta as any).env?.VITE_GOOGLE_CALENDAR_TZ || "Asia/Kolkata";
 
   return (
     <div className="container py-10">
@@ -233,7 +274,9 @@ export default function CulturalCalendar() {
         </section>
 
         {filtered.length === 0 && (
-          <div className="mt-8 rounded-lg border border-dashed border-border p-6 text-center text-muted-foreground">No events found — try different keywords.</div>
+          <div className="mt-8 rounded-lg border border-dashed border-border p-6 text-center text-muted-foreground">
+            No events found — try different keywords.
+          </div>
         )}
       </div>
     </div>

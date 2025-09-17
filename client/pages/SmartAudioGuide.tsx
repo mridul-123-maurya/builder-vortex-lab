@@ -84,10 +84,21 @@ const DICT = {
 
 function useSpeech(enabled: boolean, lang: string) {
   const speak = (text: string) => {
-    if (!enabled || typeof window === "undefined" || !("speechSynthesis" in window))
+    if (
+      !enabled ||
+      typeof window === "undefined" ||
+      !("speechSynthesis" in window)
+    )
       return;
     const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = lang === "hi" ? "hi-IN" : lang === "ne" ? "ne-NP" : lang === "bo" ? "bo" : "en-IN";
+    utter.lang =
+      lang === "hi"
+        ? "hi-IN"
+        : lang === "ne"
+          ? "ne-NP"
+          : lang === "bo"
+            ? "bo"
+            : "en-IN";
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
   };
@@ -95,17 +106,27 @@ function useSpeech(enabled: boolean, lang: string) {
 }
 
 function bcp47(lang: string) {
-  return lang === "hi" ? "hi-IN" : lang === "ne" ? "ne-NP" : lang === "bo" ? "bo" : "en-IN";
+  return lang === "hi"
+    ? "hi-IN"
+    : lang === "ne"
+      ? "ne-NP"
+      : lang === "bo"
+        ? "bo"
+        : "en-IN";
 }
 
 function useSpeechRecognition(lang: string, onText: (text: string) => void) {
   const [listening, setListening] = useState(false);
-  const supported = typeof window !== "undefined" &&
-    ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+  const supported =
+    typeof window !== "undefined" &&
+    ((window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition);
 
   const start = () => {
     if (!supported || listening) return;
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR =
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
     const rec = new SR();
     rec.lang = bcp47(lang);
     rec.interimResults = false;
@@ -141,10 +162,12 @@ export default function SmartAudioGuide() {
   const [chatLang, setChatLang] = useState(appLang);
   const [speakOn, setSpeakOn] = useState(true);
   const [input, setInput] = useState("");
-  const [msgs, setMsgs] = useState<Msg[]>([{
-    role: "assistant",
-    text: DICT[appLang].notFound,
-  }]);
+  const [msgs, setMsgs] = useState<Msg[]>([
+    {
+      role: "assistant",
+      text: DICT[appLang].notFound,
+    },
+  ]);
   const { speak } = useSpeech(speakOn, chatLang);
   const endRef = useRef<HTMLDivElement | null>(null);
   const recog = useSpeechRecognition(chatLang, (text) => {
@@ -182,7 +205,9 @@ export default function SmartAudioGuide() {
         <header className="mb-4 flex items-center justify-between">
           <h1 className="text-2xl md:text-3xl font-bold">{strings.title}</h1>
           <div className="flex items-center gap-3">
-            <label className="text-sm text-muted-foreground">{strings.language}</label>
+            <label className="text-sm text-muted-foreground">
+              {strings.language}
+            </label>
             <select
               value={chatLang}
               onChange={(e) => setChatLang(e.target.value as any)}
@@ -205,16 +230,33 @@ export default function SmartAudioGuide() {
         </header>
 
         <section className="mb-3 flex flex-wrap gap-2">
-          <QuickChip onClick={() => handleSend("upcoming festivals")}>{strings.eventsIntro}</QuickChip>
-          <QuickChip onClick={() => handleSend("popular monasteries")}>{strings.toursIntro}</QuickChip>
-          <QuickChip onClick={() => handleSend("Tell me about Rumtek Monastery")}>Rumtek</QuickChip>
-          <QuickChip onClick={() => handleSend("Show calendar")}>{strings.calendarCta}</QuickChip>
+          <QuickChip onClick={() => handleSend("upcoming festivals")}>
+            {strings.eventsIntro}
+          </QuickChip>
+          <QuickChip onClick={() => handleSend("popular monasteries")}>
+            {strings.toursIntro}
+          </QuickChip>
+          <QuickChip
+            onClick={() => handleSend("Tell me about Rumtek Monastery")}
+          >
+            Rumtek
+          </QuickChip>
+          <QuickChip onClick={() => handleSend("Show calendar")}>
+            {strings.calendarCta}
+          </QuickChip>
         </section>
 
         <div className="rounded-xl border bg-secondary/40 p-4">
           <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-1">
             {msgs.map((m, i) => (
-              <div key={i} className={m.role === "assistant" ? "flex justify-start" : "flex justify-end"}>
+              <div
+                key={i}
+                className={
+                  m.role === "assistant"
+                    ? "flex justify-start"
+                    : "flex justify-end"
+                }
+              >
                 <div
                   className={
                     "max-w-[80%] rounded-2xl px-3 py-2 text-sm shadow " +
@@ -242,13 +284,29 @@ export default function SmartAudioGuide() {
               type="button"
               variant="secondary"
               size="icon"
-              className={"h-10 w-10 " + (recog.listening ? "animate-pulse ring-2 ring-primary/40" : "")}
+              className={
+                "h-10 w-10 " +
+                (recog.listening ? "animate-pulse ring-2 ring-primary/40" : "")
+              }
               onClick={() => (recog.listening ? recog.stop() : recog.start())}
               disabled={!recog.supported}
-              aria-label={recog.listening ? "Stop voice input" : "Start voice input"}
-              title={recog.supported ? (recog.listening ? "Stop" : "Speak") : "Voice input not supported in this browser"}
+              aria-label={
+                recog.listening ? "Stop voice input" : "Start voice input"
+              }
+              title={
+                recog.supported
+                  ? recog.listening
+                    ? "Stop"
+                    : "Speak"
+                  : "Voice input not supported in this browser"
+              }
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-5 w-5"
+              >
                 <path d="M12 14a3 3 0 0 0 3-3V7a3 3 0 1 0-6 0v4a3 3 0 0 0 3 3z" />
                 <path d="M5 11a1 1 0 1 0-2 0 9 9 0 0 0 8 8v3h2v-3a9 9 0 0 0 8-8 1 1 0 1 0-2 0 7 7 0 1 1-14 0z" />
               </svg>
@@ -261,7 +319,10 @@ export default function SmartAudioGuide() {
           <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
             {recog.listening && <span>Listening…</span>}
             <span>
-              {strings.calendarCta}: <Link to="/calendar" className="underline">/calendar</Link>
+              {strings.calendarCta}:{" "}
+              <Link to="/calendar" className="underline">
+                /calendar
+              </Link>
             </span>
           </div>
         </div>
@@ -270,7 +331,13 @@ export default function SmartAudioGuide() {
   );
 }
 
-function QuickChip({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
+function QuickChip({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+}) {
   return (
     <button
       onClick={onClick}
@@ -283,16 +350,23 @@ function QuickChip({ children, onClick }: { children: React.ReactNode; onClick: 
 
 function includesName(q: string, name: string) {
   const qlc = q.toLowerCase();
-  const tokens = name.toLowerCase().split(/[^a-z0-9]+/).filter((t) => t.length > 2);
+  const tokens = name
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((t) => t.length > 2);
   return tokens.every((t) => qlc.includes(t));
 }
 
 function findTour(q: string) {
-  return tours.find((t) => includesName(q, t.name) || q.toLowerCase().includes(t.id));
+  return tours.find(
+    (t) => includesName(q, t.name) || q.toLowerCase().includes(t.id),
+  );
 }
 
 function findEvent(q: string) {
-  return events.find((e) => includesName(q, e.name) || q.toLowerCase().includes(e.id));
+  return events.find(
+    (e) => includesName(q, e.name) || q.toLowerCase().includes(e.id),
+  );
 }
 
 function generateReply(q: string, lang: "en" | "hi" | "ne" | "bo") {
@@ -305,33 +379,54 @@ function generateReply(q: string, lang: "en" | "hi" | "ne" | "bo") {
   const askBook = /(book|tickets?|trip|tour|booking|reserve|बुक)/.test(lc);
 
   // Events scope
-  if (lc.includes("festival") || lc.includes("event") || lc.includes("calendar")) {
+  if (
+    lc.includes("festival") ||
+    lc.includes("event") ||
+    lc.includes("calendar")
+  ) {
     const match = findEvent(lc);
     if (match) {
-      if (askWhen) return `${match.name} — ${match.date} at ${match.location}${match.monastery ? ", " + match.monastery : ""}. More at /calendar.`;
-      if (askWhere) return `${match.name} is at ${match.location}${match.monastery ? ", " + match.monastery : ""}. More at /calendar.`;
+      if (askWhen)
+        return `${match.name} — ${match.date} at ${match.location}${match.monastery ? ", " + match.monastery : ""}. More at /calendar.`;
+      if (askWhere)
+        return `${match.name} is at ${match.location}${match.monastery ? ", " + match.monastery : ""}. More at /calendar.`;
       return `${DICT[lang].eventsIntro}\n• ${match.name} — ${match.date} (${match.location}${match.monastery ? ", " + match.monastery : ""})\n→ /calendar`;
     }
     const head = DICT[lang].eventsIntro;
     const list = events
-      .map((e) => `• ${e.name} — ${e.date} (${e.location}${e.monastery ? ", " + e.monastery : ""})`)
+      .map(
+        (e) =>
+          `• ${e.name} — ${e.date} (${e.location}${e.monastery ? ", " + e.monastery : ""})`,
+      )
       .join("\n");
     return `${head}\n${list}\n→ /calendar`;
   }
 
   // Tours scope
-  if (lc.includes("monastery") || lc.includes("monasteries") || lc.includes("tour") || lc === "tours" || lc.includes("rumtek") || lc.includes("monastery")) {
+  if (
+    lc.includes("monastery") ||
+    lc.includes("monasteries") ||
+    lc.includes("tour") ||
+    lc === "tours" ||
+    lc.includes("rumtek") ||
+    lc.includes("monastery")
+  ) {
     const match = findTour(lc);
     if (match) {
       if (askWhere) return `${match.name} is in ${match.location}.`;
-      if (askWhat) return `${match.name} — ${match.location}${match.century ? ", " + match.century : ""}. Explore 360° tour at /tours/${match.id}.`;
-      if (askBook) return `You can book a trip from Tourist Services → /services. Also explore /tours/${match.id}.`;
+      if (askWhat)
+        return `${match.name} — ${match.location}${match.century ? ", " + match.century : ""}. Explore 360° tour at /tours/${match.id}.`;
+      if (askBook)
+        return `You can book a trip from Tourist Services → /services. Also explore /tours/${match.id}.`;
       return `${match.name} — ${match.location}${match.century ? ", " + match.century : ""}. See 360° tour at /tours/${match.id}.`;
     }
     const head = DICT[lang].toursIntro;
     const list = tours
       .slice(0, 6)
-      .map((t) => `• ${t.name} — ${t.location}${t.century ? ", " + t.century : ""} (Go: /tours/${t.id})`)
+      .map(
+        (t) =>
+          `• ${t.name} — ${t.location}${t.century ? ", " + t.century : ""} (Go: /tours/${t.id})`,
+      )
       .join("\n");
     return `${head}\n${list}`;
   }
@@ -341,9 +436,11 @@ function generateReply(q: string, lang: "en" | "hi" | "ne" | "bo") {
 
   // Try entity-first
   const hitTour = findTour(lc);
-  if (hitTour) return `${hitTour.name} — ${hitTour.location}${hitTour.century ? ", " + hitTour.century : ""}. Explore the 360° tour at /tours/${hitTour.id}.`;
+  if (hitTour)
+    return `${hitTour.name} — ${hitTour.location}${hitTour.century ? ", " + hitTour.century : ""}. Explore the 360° tour at /tours/${hitTour.id}.`;
   const hitEvent = findEvent(lc);
-  if (hitEvent) return `${hitEvent.name} — ${hitEvent.date} at ${hitEvent.location}${hitEvent.monastery ? ", " + hitEvent.monastery : ""}. More at /calendar.`;
+  if (hitEvent)
+    return `${hitEvent.name} — ${hitEvent.date} at ${hitEvent.location}${hitEvent.monastery ? ", " + hitEvent.monastery : ""}. More at /calendar.`;
 
   return DICT[lang].notFound;
 }

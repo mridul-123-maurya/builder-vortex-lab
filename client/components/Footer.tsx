@@ -25,7 +25,9 @@ export default function Footer() {
             </div>
             <div className="flex flex-col leading-tight font-extrabold">
               <span className="text-lg tracking-tight">Monastery</span>
-              <span className="text-xs text-muted-foreground font-medium">360° Tours</span>
+              <span className="text-xs text-muted-foreground font-medium">
+                360° Tours
+              </span>
             </div>
           </div>
           <p className="mt-3 text-sm text-muted-foreground max-w-sm">
