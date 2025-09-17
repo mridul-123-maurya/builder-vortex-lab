@@ -12,6 +12,7 @@ import VirtualTours from "./pages/VirtualTours";
 import TourDetail from "./pages/TourDetail";
 import MapPage from "./pages/MapPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import DigitalArchives from "./pages/DigitalArchives";
 import SmartAudioGuide from "./pages/SmartAudioGuide";
 import CulturalCalendar from "./pages/CulturalCalendar";
 import MainLayout from "@/components/MainLayout";
@@ -36,7 +37,7 @@ const App = () => (
               <Route path="/map" element={<MapPage />} />
               <Route
                 path="/archives"
-                element={<PlaceholderPage title="Digital Archives" />}
+                element={<DigitalArchives />}
               />
               <Route
                 path="/calendar"
