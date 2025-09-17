@@ -12,6 +12,7 @@ import VirtualTours from "./pages/VirtualTours";
 import TourDetail from "./pages/TourDetail";
 import MapPage from "./pages/MapPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import CulturalCalendar from "./pages/CulturalCalendar";
 import MainLayout from "@/components/MainLayout";
 import { I18nProvider } from "@/context/i18n";
 import { ThemeProvider } from "next-themes";
@@ -38,7 +39,7 @@ const App = () => (
               />
               <Route
                 path="/calendar"
-                element={<PlaceholderPage title="Cultural Calendar" />}
+                element={<CulturalCalendar />}
               />
               <Route
                 path="/audio"
