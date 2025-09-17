@@ -182,9 +182,9 @@ function FestivalCard({ festival }: { festival: Festival }) {
         <Button asChild variant="default" size="sm">
           <Link to={festival.bookingUrl || "/services"} className="inline-flex items-center gap-2">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/MakeMyTrip_Logo.svg/256px-MakeMyTrip_Logo.svg.png"
+              src="https://cdn.builder.io/api/v1/image/assets%2F2bc642b8de1f4ba8a1b7c90f6329e3f8%2F4720fcc432eb4d08ae9dfa98959484a5?format=webp&width=64"
               alt="MakeMyTrip"
-              className="h-4 w-auto rounded-[2px] bg-white p-[1px]"
+              className="h-4 w-4 rounded-[2px]"
               loading="lazy"
               decoding="async"
             />
