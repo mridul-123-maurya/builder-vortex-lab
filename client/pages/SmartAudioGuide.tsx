@@ -46,7 +46,7 @@ const DICT = {
     placeholder: "मठों, मार्गों या आने वाले त्योहारों के बारे में पूछें…",
     send: "भेजें",
     speak: "आवाज़ में सुनाएँ",
-    language: "भाषा",
+    language: "भाष���",
     suggestions: "सुझाव",
     eventsIntro: "आगामी आयोजन:",
     toursIntro: "प्रमुख मठ:",
@@ -65,7 +65,7 @@ const DICT = {
     toursIntro: "लोकप्रिय मठहरू:",
     calendarCta: "सांस्कृतिक पात्रो हेर्नुहोस्",
     notFound:
-      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस्तै: 'रुमट���कबारे बताऊ' वा 'आगामी पर्व'।",
+      "म सिक्किमका मठ, 360° भ्रमण र पर्वमा मद्दत गर्छु। जस���तै: 'रुमटेकबारे बताऊ' वा 'आगामी पर्व'।",
   },
   bo: {
     title: "རྣམ་གྲངས་སྒྲ་སྒྲིག",
@@ -147,6 +147,10 @@ export default function SmartAudioGuide() {
   }]);
   const { speak } = useSpeech(speakOn, chatLang);
   const endRef = useRef<HTMLDivElement | null>(null);
+  const recog = useSpeechRecognition(chatLang, (text) => {
+    setInput(text);
+    handleSend(text);
+  });
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
