@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import GoogleCalendarEmbed from "@/components/GoogleCalendarEmbed";
 
 type Festival = {
   id: string;
@@ -142,12 +143,19 @@ export default function CulturalCalendar() {
     });
   }, [query]);
 
+  const gcalId = import.meta.env.VITE_GOOGLE_CALENDAR_ID as string | undefined;
+  const timeZone = (import.meta as any).env?.VITE_GOOGLE_CALENDAR_TZ || "Asia/Kolkata";
+
   return (
     <div className="container py-10">
       <div className="mx-auto max-w-6xl">
         <CalendarHeader count={festivals.length} />
 
         <SearchBar query={query} setQuery={setQuery} />
+
+        <div className="mt-6">
+          <GoogleCalendarEmbed calendarId={gcalId} timeZone={timeZone} />
+        </div>
 
         <section className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((f) => (
