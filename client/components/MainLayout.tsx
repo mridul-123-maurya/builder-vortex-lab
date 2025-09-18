@@ -8,7 +8,10 @@ export default function MainLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen flex flex-col">
       <OfflineBanner />
       <NavBar />
-      <main className="flex-1">{children}</main>
+      <main className="relative flex-1">
+        <div className="pointer-events-none absolute inset-0 -z-10 [background:radial-gradient(600px_circle_at_20%_10%,hsl(var(--accent)/0.08),transparent_70%),radial-gradient(500px_circle_at_80%_0%,hsl(var(--primary)/0.06),transparent_60%)]" />
+        {children}
+      </main>
       <Footer />
     </div>
   );
