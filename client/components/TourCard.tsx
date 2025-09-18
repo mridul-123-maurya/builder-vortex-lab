@@ -11,7 +11,7 @@ export interface Tour {
 
 export default function TourCard({ tour }: { tour: Tour }) {
   return (
-    <div className="group rounded-xl border bg-card text-card-foreground overflow-hidden shadow-sm hover:shadow-md transition-all">
+    <div className="group rounded-2xl border bg-card/60 text-card-foreground overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition">
       <div className="relative h-44 w-full overflow-hidden">
         <img
           src={tour.image}
