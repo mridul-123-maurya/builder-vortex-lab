@@ -61,12 +61,16 @@ export default function Index() {
                 loading="lazy"
               />
               <div className="px-1">
-                <h3 className="text-2xl md:text-3xl font-display font-semibold">{highlight.name}</h3>
+                <h3 className="text-2xl md:text-3xl font-display font-semibold">
+                  {highlight.name}
+                </h3>
                 <p className="mt-1 text-sm md:text-base text-muted-foreground">
                   {highlight.location}
                 </p>
                 <p className="mt-3 text-base leading-relaxed">
-                  An important center of Buddhist learning and art, known for its serene surroundings and heritage. Explore detailed history, photos, and a 360° view.
+                  An important center of Buddhist learning and art, known for
+                  its serene surroundings and heritage. Explore detailed
+                  history, photos, and a 360° view.
                 </p>
                 <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-start gap-3">
                   <div className="flex gap-3">
@@ -77,16 +81,21 @@ export default function Index() {
                       <Link to="/archives">View Archives</Link>
                     </Button>
                   </div>
-
                 </div>
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-base md:text-lg font-semibold">Top paid trips</div>
-                      <div className="text-xs text-muted-foreground">Curated packages from trusted providers</div>
+                      <div className="text-base md:text-lg font-semibold">
+                        Top paid trips
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Curated packages from trusted providers
+                      </div>
                     </div>
                     <div className="text-sm">
-                      <a href="#" className="text-primary hover:underline">See all offers</a>
+                      <a href="#" className="text-primary hover:underline">
+                        See all offers
+                      </a>
                     </div>
                   </div>
 
@@ -111,12 +120,24 @@ export default function Index() {
                         blurb: "Search offers",
                       },
                     ].map((p) => (
-                      <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer" className="w-56 flex-shrink-0 rounded-xl border bg-card p-3 hover:shadow-lg hover:-translate-y-1 transition-transform overflow-hidden">
+                      <a
+                        key={p.href}
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-56 flex-shrink-0 rounded-xl border bg-card p-3 hover:shadow-lg hover:-translate-y-1 transition-transform overflow-hidden"
+                      >
                         <div className="flex items-center gap-3">
-                          <img src={p.img} alt={p.label} className="h-8 w-auto object-contain" />
+                          <img
+                            src={p.img}
+                            alt={p.label}
+                            className="h-8 w-auto object-contain"
+                          />
                           <div>
                             <div className="font-medium">{p.label}</div>
-                            <div className="text-xs text-muted-foreground">{p.blurb}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {p.blurb}
+                            </div>
                           </div>
                         </div>
                       </a>
@@ -138,15 +159,27 @@ export default function Index() {
                         price: "₹18,500",
                       },
                     ].map((t) => (
-                      <a key={t.href} href={t.href} target="_blank" rel="noopener noreferrer" className="rounded-xl border p-3 bg-card hover:shadow-md hover:bg-accent transition">
+                      <a
+                        key={t.href}
+                        href={t.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-xl border p-3 bg-card hover:shadow-md hover:bg-accent transition"
+                      >
                         <div className="flex items-center gap-3">
                           <div className="flex-1">
                             <div className="font-medium">{t.title}</div>
-                            <div className="text-xs text-muted-foreground">{t.meta}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {t.meta}
+                            </div>
                           </div>
                           <div className="text-right">
-                            <div className="text-lg font-semibold text-primary">{t.price}</div>
-                            <div className="text-xs text-muted-foreground">from</div>
+                            <div className="text-lg font-semibold text-primary">
+                              {t.price}
+                            </div>
+                            <div className="text-xs text-muted-foreground">
+                              from
+                            </div>
                           </div>
                         </div>
                       </a>
@@ -201,12 +234,16 @@ function QuickLink({
   return (
     <Link
       to={to}
-      className="group rounded-2xl border p-5 bg-card hover:shadow-md hover:-translate-y-0.5 transition"
+      className="group rounded-2xl border p-5 bg-card/60 hover:bg-card hover:shadow-xl hover:-translate-y-0.5 transition"
     >
-      <div className="flex items-center gap-3">
-        <div className="text-2xl">{icon}</div>
+      <div className="flex items-center gap-4">
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-sm">
+          <span className="text-lg leading-none">{icon}</span>
+        </span>
         <div>
-          <h3 className="font-semibold group-hover:text-primary">{title}</h3>
+          <h3 className="font-semibold group-hover:text-primary tracking-tight">
+            {title}
+          </h3>
           <p className="text-sm text-muted-foreground">{description}</p>
         </div>
       </div>
