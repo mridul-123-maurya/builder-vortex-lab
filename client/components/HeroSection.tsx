@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useI18n } from "@/context/i18n";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 export default function HeroSection() {
