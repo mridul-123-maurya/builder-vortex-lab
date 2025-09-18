@@ -9,6 +9,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 
 type ArchiveItem = {
   id: string;
@@ -61,9 +64,14 @@ export default function DigitalArchives() {
             Explore digitized manuscripts, thangkas, audio, and cultural
             records.
           </p>
+          <div className="mt-3 inline-flex items-center gap-2 text-xs text-muted-foreground">
+            <span className="rounded-full bg-muted px-2 py-0.5">{items.length} items</span>
+            {kind !== "all" && <span className="rounded-full bg-muted px-2 py-0.5">{kind}</span>}
+            {monastery !== "all" && <span className="rounded-full bg-muted px-2 py-0.5">{monastery}</span>}
+          </div>
         </header>
 
-        <div className="mb-6 grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="sticky top-[60px] z-10 mb-6 grid grid-cols-1 gap-3 rounded-xl border bg-background/70 p-3 backdrop-blur md:grid-cols-3">
           <div>
             <label className="sr-only" htmlFor="archive-q">
               Search
@@ -111,16 +119,35 @@ export default function DigitalArchives() {
           {items.map((it) => (
             <Card
               key={it.id}
-              className="overflow-hidden hover:shadow-md transition"
+              className="overflow-hidden transition hover:shadow-xl"
             >
-              {it.thumbnail && (
-                <img
-                  src={it.thumbnail}
-                  alt={it.title}
-                  className="h-40 w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
+              {it.thumbnail ? (
+                <div className="relative">
+                  <AspectRatio ratio={16 / 9}>
+                    <img
+                      src={it.thumbnail}
+                      alt={it.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </AspectRatio>
+                  {it.wikipedia && (
+                    <a
+                      href={it.wikipedia}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md bg-white/90 px-2 py-1 text-xs font-medium shadow hover:bg-white"
+                    >
+                      Wiki
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                        <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              ) : (
+                <Skeleton className="h-40 w-full" />
               )}
               <CardHeader>
                 <CardTitle className="text-lg">{it.title}</CardTitle>
@@ -134,14 +161,9 @@ export default function DigitalArchives() {
                   {it.type}
                 </Badge>
                 {it.wikipedia ? (
-                  <a
-                    href={it.wikipedia}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm text-primary underline"
-                  >
-                    Wikipedia
-                  </a>
+                  <Button asChild variant="ghost" size="sm">
+                    <a href={it.wikipedia} target="_blank" rel="noreferrer">Open Wikipedia</a>
+                  </Button>
                 ) : (
                   <span className="text-sm text-muted-foreground">No link</span>
                 )}
