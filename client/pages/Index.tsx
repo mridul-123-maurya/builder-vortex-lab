@@ -201,12 +201,14 @@ function QuickLink({
   return (
     <Link
       to={to}
-      className="group rounded-2xl border p-5 bg-card hover:shadow-md hover:-translate-y-0.5 transition"
+      className="group rounded-2xl border p-5 bg-card/60 hover:bg-card hover:shadow-xl hover:-translate-y-0.5 transition"
     >
-      <div className="flex items-center gap-3">
-        <div className="text-2xl">{icon}</div>
+      <div className="flex items-center gap-4">
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-sm">
+          <span className="text-lg leading-none">{icon}</span>
+        </span>
         <div>
-          <h3 className="font-semibold group-hover:text-primary">{title}</h3>
+          <h3 className="font-semibold group-hover:text-primary tracking-tight">{title}</h3>
           <p className="text-sm text-muted-foreground">{description}</p>
         </div>
       </div>
