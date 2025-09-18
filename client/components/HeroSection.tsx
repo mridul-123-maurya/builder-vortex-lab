@@ -5,7 +5,7 @@ import { useI18n } from "@/context/i18n";
 export default function HeroSection() {
   const { t } = useI18n();
   return (
-    <section className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-secondary to-white">
+    <section className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-secondary to-white animate-fade-up">
       <div className="absolute inset-0">
         <img
           src="https://www.wtravelmagazine.com/wp-content/uploads/2020/09/30.113.5-Beautiful-statue-of-Lord-Buddha-at-Ravangla-Sikkim-image-by-Rudra-Narayan-Mitra.jpg"
@@ -15,8 +15,8 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-tr from-background/80 via-background/30 to-transparent" />
       </div>
-      <div className="relative z-10 px-6 md:px-12 py-20 md:py-28">
-        <div className="max-w-3xl">
+      <div className="relative z-10 px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-3xl rounded-2xl border border-white/30 bg-white/40 backdrop-blur-md p-6 md:p-8 shadow-lg dark:bg-white/5 dark:border-white/10">
           <p className="uppercase tracking-widest text-xs text-accent-foreground/80">
             {t("appName")}
           </p>
