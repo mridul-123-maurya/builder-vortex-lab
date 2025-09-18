@@ -8,9 +8,13 @@ export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0 as number;
-    const onScroll = () => { raf = window.requestAnimationFrame(() => setScrollY(window.scrollY || 0)); };
+    const onScroll = () => {
+      raf = window.requestAnimationFrame(() => setScrollY(window.scrollY || 0));
+    };
     if (!reduce) {
       window.addEventListener("scroll", onScroll, { passive: true } as any);
       onScroll();
@@ -30,7 +34,10 @@ export default function HeroSection() {
           style={{ transform: `translateY(${scrollY * 0.15}px) scale(1.08)` }}
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-background/80 via-background/30 to-transparent will-change-transform" style={{ transform: `translateY(${scrollY * 0.08}px)` }} />
+        <div
+          className="absolute inset-0 bg-gradient-to-tr from-background/80 via-background/30 to-transparent will-change-transform"
+          style={{ transform: `translateY(${scrollY * 0.08}px)` }}
+        />
       </div>
       <div className="relative z-10 px-6 md:px-12 py-16 md:py-24">
         <div className="max-w-3xl rounded-2xl border border-white/30 bg-white/40 backdrop-blur-md p-6 md:p-8 shadow-lg dark:bg-white/5 dark:border-white/10">

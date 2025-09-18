@@ -65,9 +65,17 @@ export default function DigitalArchives() {
             records.
           </p>
           <div className="mt-3 inline-flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="rounded-full bg-muted px-2 py-0.5">{items.length} items</span>
-            {kind !== "all" && <span className="rounded-full bg-muted px-2 py-0.5">{kind}</span>}
-            {monastery !== "all" && <span className="rounded-full bg-muted px-2 py-0.5">{monastery}</span>}
+            <span className="rounded-full bg-muted px-2 py-0.5">
+              {items.length} items
+            </span>
+            {kind !== "all" && (
+              <span className="rounded-full bg-muted px-2 py-0.5">{kind}</span>
+            )}
+            {monastery !== "all" && (
+              <span className="rounded-full bg-muted px-2 py-0.5">
+                {monastery}
+              </span>
+            )}
           </div>
         </header>
 
@@ -140,7 +148,12 @@ export default function DigitalArchives() {
                       className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md bg-white/90 px-2 py-1 text-xs font-medium shadow hover:bg-white"
                     >
                       Wiki
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="h-4 w-4"
+                      >
                         <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
                       </svg>
                     </a>
@@ -162,7 +175,9 @@ export default function DigitalArchives() {
                 </Badge>
                 {it.wikipedia ? (
                   <Button asChild variant="ghost" size="sm">
-                    <a href={it.wikipedia} target="_blank" rel="noreferrer">Open Wikipedia</a>
+                    <a href={it.wikipedia} target="_blank" rel="noreferrer">
+                      Open Wikipedia
+                    </a>
                   </Button>
                 ) : (
                   <span className="text-sm text-muted-foreground">No link</span>
